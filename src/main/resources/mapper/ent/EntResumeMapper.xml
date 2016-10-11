@@ -1,0 +1,294 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cnfwsy.interfaces.mapper.ent.EntResumeMapper">
+
+    <sql id="searchInfoSql">
+        `id` AS id,
+        `account_id` AS  accountId,
+        `company_id` AS  companyId,
+        `resume_id` AS  resumeId,
+        `job_id` AS  jobId,
+        `status_id` AS  statusId,
+        `create_time` AS  createTime,
+        `refresh_time` AS  refreshTime,
+        `update_time` AS  updateTime,
+        `employee_id` AS  employeeId,
+        `del_flag` AS  delFlag
+    </sql>
+
+
+    <select id="queryInfo" resultType="com.cnfwsy.interfaces.bean.ent.EntResume">
+        select
+        <include refid="searchInfoSql"/>
+        FROM    t_ent_resume a
+        WHERE
+            `job_id` = #{jobId}
+        limit 1
+    </select>
+
+    <select id="listInfosCounts" resultType="Integer">
+        SELECT COUNT(*)
+        FROM  t_ent_resume a
+        where `del_flag`=0
+    </select>
+
+    <select id="listFilteredInfosCounts" resultType="Integer">
+        SELECT COUNT(*)
+        FROM  t_ent_resume
+        where `del_flag`=0
+         <if test="accountId !=null and accountId != ''">
+            and  `account_id`  =#{accountId}
+         </if>
+         <if test="companyId !=null and companyId != ''">
+            and  `company_id`  =#{companyId}
+         </if>
+         <if test="resumeId !=null and resumeId != ''">
+            and  `resume_id`  =#{resumeId}
+         </if>
+         <if test="jobId !=null and jobId != ''">
+            and  `job_id`  =#{jobId}
+         </if>
+         <if test="statusId !=null">
+            and  `status_id`  =#{statusId}
+         </if>
+         <if test="createTime !=null and createTime != ''">
+            and  `create_time`  =#{createTime}
+         </if>
+         <if test="refreshTime !=null and refreshTime != ''">
+            and  `refresh_time`  =#{refreshTime}
+         </if>
+         <if test="updateTime !=null and updateTime != ''">
+            and  `update_time`  =#{updateTime}
+         </if>
+         <if test="employeeId !=null and employeeId != ''">
+            and  `employee_id`  =#{employeeId}
+         </if>
+         <if test="id !=null and id != ''">
+            and  `id`  =#{id}
+         </if>
+         <if test="delFlag !=null and delFlag != ''">
+            and  `del_flag`  =#{delFlag}
+         </if>
+    </select>
+
+    <select id="searchInfosBak" resultMap="EntResumeResultMap">
+        SELECT
+        <include refid="searchInfoSql"/>
+        FROM  t_ent_resume a
+        WHERE del_flag=0
+        <if test="accountId !=null and accountId != ''">
+            and  `account_id`  =#{accountId}
+        </if>
+        <if test="companyId !=null and companyId != ''">
+            and  `company_id`  =#{companyId}
+        </if>
+        <if test="resumeId !=null and resumeId != ''">
+            and  `resume_id`  =#{resumeId}
+        </if>
+        <if test="jobId !=null and jobId != ''">
+            and  `job_id`  =#{jobId}
+        </if>
+        <if test="statusId !=null">
+            and  `status_id`  =#{statusId}
+        </if>
+        <if test="createTime !=null and createTime != ''">
+            and  `create_time`  =#{createTime}
+        </if>
+        <if test="refreshTime !=null and refreshTime != ''">
+            and  `refresh_time`  =#{refreshTime}
+        </if>
+        <if test="updateTime !=null and updateTime != ''">
+            and  `update_time`  =#{updateTime}
+        </if>
+        <if test="employeeId !=null and employeeId != ''">
+            and  `employee_id`  =#{employeeId}
+        </if>
+        <if test="id !=null and id != ''">
+            and  `id`  =#{id}
+        </if>
+        <if test="delFlag !=null and delFlag != ''">
+            and  `del_flag`  =#{delFlag}
+        </if>
+        limit #{start},#{pageSize}
+    </select>
+
+    <resultMap type="com.cnfwsy.interfaces.bean.ent.EntResume" id="EntResumeResultMap">
+        <id property="id" column="id"/>
+        <result property="companyId" column="companyId"/>
+        <result property="resumeId" column="resumeId"/>
+        <result property="employeeId" column="employeeId"/>
+        <result property="accountId" column="accountId"/>
+        <result property="jobId" column="jobId"/>
+        <result property="statusId" column="statusId"/>
+        <result property="createTime" column="createTime"/>
+        <result property="refreshTime" column="refreshTime"/>
+        <result property="updateTime" column="updateTime"/>
+        <result property="delFlag" column="delFlag"/>
+        <association property="entJobinfo" javaType="com.cnfwsy.interfaces.bean.ent.EntJobinfo" column="jobId" select="com.cnfwsy.interfaces.mapper.ent.EntJobinfoMapper.queryInfo"/>
+        <association property="empEmployee" javaType="com.cnfwsy.interfaces.bean.emp.EmpEmployee" column="employeeId" select="com.cnfwsy.interfaces.mapper.emp.EmpEmployeeMapper.queryInfo"/>
+    </resultMap>
+
+    <update id="updateInfo">
+        update
+            t_ent_resume  a
+        <set>
+            <if test="statusId !=null and statusId != ''">
+                `status_id`  = #{statusId},
+            </if>
+            <if test="delFlag !=null and delFlag != ''">
+                and  `del_flag`  =#{delFlag}
+            </if>
+            `refresh_time`  = sysdate(),
+            `update_time` = sysdate(),
+        </set>
+        WHERE
+            `employee_id` = #{employeeId}
+        and `job_id` = #{jobId}
+    </update>
+
+    <update id="del">
+        update  t_ent_resume a
+        set  `del_flag`=1
+        where
+            `job_id`+`employee_id` = #{employeeId}
+    </update>
+
+    <update id="updateBatch" parameterType="java.util.List">
+        <foreach collection="list" item="item" index="index" open="" close="" separator=";">
+            update
+            t_ent_resume  a
+            <set>
+                <if test="item.statusId !=null and item.statusId != ''">
+                    `status_id`  = #{item.statusId},
+                </if>
+                <if test="item.delFlag !=null and item.delFlag != ''">
+                    and  `del_flag`  =#{item.delFlag}
+                </if>
+                `refresh_time`  = sysdate(),
+                `update_time` = sysdate(),
+            </set>
+            WHERE
+            `employee_id` = #{item.employeeId}
+            and `job_id` = #{item.jobId}
+        </foreach>
+    </update>
+
+
+    <insert id="add">
+        insert into
+        t_ent_resume(`account_id`,`company_id`,`resume_id`,`job_id`,`status_id`,`refresh_time`,`employee_id`)
+        values (#{accountId},#{companyId},#{resumeId},#{jobId},#{statusId},sysdate()},#{employeeId})
+    </insert>
+
+    <select id="searchInfos" resultType="com.cnfwsy.interfaces.bean.ent.EntResume">
+        SELECT
+            a.company_id AS codeCompanyId,
+            a.job_id AS codeJobId,
+            a.resume_id AS resumeId,
+            a.company_id AS companyId,
+            a.employee_id AS employeeId,
+            a.job_id AS jobId,
+            a.refresh_time AS refreshTime,
+            a.account_id AS accountId,
+            a.status_id AS statusId,
+            b.`name` AS `name`,
+            b.one_word AS oneWord,
+            b.cur_position_id AS cur_positionId,
+            b.sex_name AS sexName,
+            b.sex_id AS sexId,
+            b.academic_id AS academicId,
+            b.academic_name AS academicName,
+            b.area_id AS areaId,
+            b.seniority_id AS seniorityId,
+            b.seniority_name AS seniorityName,
+            b.state_name AS stateName,
+            b.state_id AS stateId,
+            b.icon_path AS iconPath,
+            b.website AS website,
+            b.phone AS phone,
+            b.mail_box AS mailBox,
+            b.update_time AS updateTime,
+            d.job_name AS jobName
+        FROM
+            t_ent_resume a,
+            t_emp_employee b,
+            t_ent_jobinfo d
+        WHERE
+            a.employee_id = b.employee_id
+            AND a.job_id = d.job_id
+            AND a.del_flag = '0'
+            AND b.del_flag = '0'
+            AND d.del_flag = '0'
+        <if test="accountId !=null and accountId != ''">
+            and  a.`account_id`  =#{accountId}
+        </if>
+        <if test="companyId !=null and companyId != ''">
+            and  a.`company_id`  =#{companyId}
+        </if>
+        <if test="resumeId !=null and resumeId != ''">
+            and  a.`resume_id`  =#{resumeId}
+        </if>
+        <if test="jobId !=null and jobId != ''">
+            and  a.`job_id`  =#{jobId}
+        </if>
+        <if test="statusId !=null">
+            and  a.`status_id`  =#{statusId}
+        </if>
+        <if test="employeeId !=null and employeeId != ''">
+            and  a.`employee_id`  =#{employeeId}
+        </if>
+        <if test="academicName !=null and academicName != ''">
+            and  b.`academic_name`  =#{academicName}
+        </if>
+        <if test="website !=null and website != ''">
+            and  b.`website`  =#{website}
+        </if>
+        <if test="sexId !=null and sexId != ''">
+            and  b.`sex_id`  =#{sexId}
+        </if>
+        <if test="stateId !=null and stateId != ''">
+            and  b.`state_id`  =#{stateId}
+        </if>
+        <if test="seniorityId !=null and seniorityId != ''">
+            and  b.`seniority_id`  =#{seniorityId}
+        </if>
+        <if test="oneWord !=null and oneWord != ''">
+            and  b.`one_word`  =#{oneWord}
+        </if>
+        <if test="curPositionId !=null and curPositionId != ''">
+            and  b.`cur_position_id`  =#{curPositionId}
+        </if>
+        <if test="areaId !=null and areaId != ''">
+            and  b.`area_id`  =#{areaId}
+        </if>
+        <if test="mailBox !=null and mailBox != ''">
+            and  b.`mail_box`  =#{mailBox}
+        </if>
+        <if test="academicId !=null and academicId != ''">
+            and  b.`academic_id`  =#{academicId}
+        </if>
+        <if test="stateName !=null and stateName != ''">
+            and  b.`state_name`  =#{stateName}
+        </if>
+        <if test="phone !=null and phone != ''">
+            and  b.`phone`  =#{phone}
+        </if>
+        <if test="sexName !=null and sexName != ''">
+            and  b.`sex_name`  =#{sexName}
+        </if>
+        <if test="name !=null and name != ''">
+            and  b.`name`  =#{name}
+        </if>
+        <if test="iconPath !=null and iconPath != ''">
+            and  b.`icon_path`  =#{iconPath}
+        </if>
+        <if test="seniorityName !=null and seniorityName != ''">
+            and  b.`seniority_name`  =#{seniorityName}
+        </if>
+        limit #{start},#{pageSize}
+    </select>
+
+
+</mapper>

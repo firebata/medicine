@@ -1,0 +1,213 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cnfwsy.interfaces.mapper.emp.EmpResExpectMapper">
+
+    <sql id="searchInfoSql">
+        `id` AS id,
+        `type_name` AS  typeName,
+        `salary__name` AS  salaryName,
+        `description` AS  description,
+        `employee_id` AS  employeeId,
+        `update_time` AS  updateTime,
+        `expect_id` AS  expectId,
+        `del_flag` AS  delFlag,
+        `position_name` AS  positionName,
+        `area_id` AS  areaId,
+        `resume_id` AS  resumeId,
+        `position_id` AS  positionId,
+        `area_name` AS  areaName,
+        `create_time` AS  createTime,
+        `type_id` AS  typeId,
+        `id` AS  id,
+        `salary_id` AS  salaryId
+    </sql>
+
+
+    <select id="queryInfo" resultType="com.cnfwsy.interfaces.bean.emp.EmpResExpect">
+        select
+        <include refid="searchInfoSql"/>
+        FROM    t_emp_res_expect a
+        WHERE
+            `resume_id` = #{expectId}
+        limit 1
+    </select>
+
+    <select id="listInfosCounts" resultType="Integer">
+        SELECT COUNT(*)
+        FROM  t_emp_res_expect a
+        where `del_flag`=0
+    </select>
+
+    <select id="listFilteredInfosCounts" resultType="Integer">
+        SELECT COUNT(*)
+        FROM  t_emp_res_expect
+        where `del_flag`=0
+         <if test="typeName !=null and typeName != ''">
+            and  `type_name`  =#{typeName}
+         </if>
+         <if test="salaryName !=null and salaryName != ''">
+            and  `salary__name`  =#{salaryName}
+         </if>
+         <if test="description !=null and description != ''">
+            and  `description`  =#{description}
+         </if>
+         <if test="employeeId !=null and employeeId != ''">
+            and  `employee_id`  =#{employeeId}
+         </if>
+         <if test="updateTime !=null and updateTime != ''">
+            and  `update_time`  =#{updateTime}
+         </if>
+         <if test="expectId !=null and expectId != ''">
+            and  `expect_id`  =#{expectId}
+         </if>
+         <if test="delFlag !=null and delFlag != ''">
+            and  `del_flag`  =#{delFlag}
+         </if>
+         <if test="positionName !=null and positionName != ''">
+            and  `position_name`  =#{positionName}
+         </if>
+         <if test="areaId !=null and areaId != ''">
+            and  `area_id`  =#{areaId}
+         </if>
+         <if test="resumeId !=null and resumeId != ''">
+            and  `resume_id`  =#{resumeId}
+         </if>
+         <if test="positionId !=null and positionId != ''">
+            and  `position_id`  =#{positionId}
+         </if>
+         <if test="areaName !=null and areaName != ''">
+            and  `area_name`  =#{areaName}
+         </if>
+         <if test="createTime !=null and createTime != ''">
+            and  `create_time`  =#{createTime}
+         </if>
+         <if test="typeId !=null and typeId != ''">
+            and  `type_id`  =#{typeId}
+         </if>
+         <if test="id !=null and id != ''">
+            and  `id`  =#{id}
+         </if>
+         <if test="salaryId !=null and salaryId != ''">
+            and  `salary_id`  =#{salaryId}
+         </if>
+    </select>
+
+    <select id="searchInfos" resultType="com.cnfwsy.interfaces.bean.emp.EmpResExpect">
+        SELECT
+        <include refid="searchInfoSql"/>
+        FROM  t_emp_res_expect a
+        WHERE del_flag=0
+        <if test="typeName !=null and typeName != ''">
+            and  `type_name`  =#{typeName}
+        </if>
+        <if test="salaryName !=null and salaryName != ''">
+            and  `salary__name`  =#{salaryName}
+        </if>
+        <if test="description !=null and description != ''">
+            and  `description`  =#{description}
+        </if>
+        <if test="employeeId !=null and employeeId != ''">
+            and  `employee_id`  =#{employeeId}
+        </if>
+        <if test="updateTime !=null and updateTime != ''">
+            and  `update_time`  =#{updateTime}
+        </if>
+        <if test="expectId !=null and expectId != ''">
+            and  `expect_id`  =#{expectId}
+        </if>
+        <if test="delFlag !=null and delFlag != ''">
+            and  `del_flag`  =#{delFlag}
+        </if>
+        <if test="positionName !=null and positionName != ''">
+            and  `position_name`  =#{positionName}
+        </if>
+        <if test="areaId !=null and areaId != ''">
+            and  `area_id`  =#{areaId}
+        </if>
+        <if test="resumeId !=null and resumeId != ''">
+            and  `resume_id`  =#{resumeId}
+        </if>
+        <if test="positionId !=null and positionId != ''">
+            and  `position_id`  =#{positionId}
+        </if>
+        <if test="areaName !=null and areaName != ''">
+            and  `area_name`  =#{areaName}
+        </if>
+        <if test="createTime !=null and createTime != ''">
+            and  `create_time`  =#{createTime}
+        </if>
+        <if test="typeId !=null and typeId != ''">
+            and  `type_id`  =#{typeId}
+        </if>
+        <if test="id !=null and id != ''">
+            and  `id`  =#{id}
+        </if>
+        <if test="salaryId !=null and salaryId != ''">
+            and  `salary_id`  =#{salaryId}
+        </if>
+        limit #{start},#{pageSize}
+    </select>
+
+    <update id="updateInfo">
+        update
+            t_emp_res_expect  a
+        <set>
+            <if test="positionName !=null and positionName != ''">
+                `position_name`  = #{positionName},
+            </if>
+            <if test="areaId !=null and areaId != ''">
+                `area_id`  = #{areaId},
+            </if>
+            <if test="resumeId !=null and resumeId != ''">
+                `resume_id`  = #{resumeId},
+            </if>
+            <if test="positionId !=null and positionId != ''">
+                `position_id`  = #{positionId},
+            </if>
+            <if test="areaName !=null and areaName != ''">
+                `area_name`  = #{areaName},
+            </if>
+            <if test="typeName !=null and typeName != ''">
+                `type_name`  = #{typeName},
+            </if>
+            <if test="salaryName !=null and salaryName != ''">
+                `salary__name`  = #{salaryName},
+            </if>
+            <if test="description !=null and description != ''">
+                `description`  = #{description},
+            </if>
+            <if test="employeeId !=null and employeeId != ''">
+                `employee_id`  = #{employeeId},
+            </if>
+            <if test="typeId !=null and typeId != ''">
+                `type_id`  = #{typeId},
+            </if>
+            <if test="expectId !=null and expectId != ''">
+                `expect_id`  = #{expectId},
+            </if>
+            <if test="salaryId !=null and salaryId != ''">
+                `salary_id`  = #{salaryId},
+            </if>
+        </set>
+        WHERE
+            `employee_id` = #{employeeId}
+    </update>
+
+    <update id="del">
+        update  t_emp_res_expect a
+        set  `del_flag`=1
+        where
+            `expect_id` = #{expectId}
+    </update>
+
+
+    <insert id="add">
+        insert into
+        t_emp_res_expect(`position_name`,`area_id`,`resume_id`,`position_id`,`area_name`,`type_name`,`salary__name`,`description`,`employee_id`,`type_id`,`expect_id`,`salary_id`)
+        values (#{positionName},#{areaId},#{resumeId},#{positionId},#{areaName},#{typeName},#{salaryName},#{description},#{employeeId},#{typeId},#{expectId},#{salaryId})
+    </insert>
+
+
+</mapper>

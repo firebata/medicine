@@ -1,0 +1,200 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:p="http://www.springframework.org/schema/p"
+       xmlns:tx="http://www.springframework.org/schema/tx"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+    http://www.springframework.org/schema/aop
+    http://www.springframework.org/schema/aop/spring-aop.xsd
+        http://www.springframework.org/schema/tx
+        http://www.springframework.org/schema/tx/spring-tx.xsd
+          http://www.springframework.org/schema/context
+      http://www.springframework.org/schema/context/spring-context.xsd">
+
+    <context:component-scan base-package="com.cnfwsy.*">
+        <!-- <context:include-filter type="regex" expression="(api|bean|model|engine|mapper)\..*"/>-->
+    </context:component-scan>
+    <context:annotation-config/><!-- 自动扫描必需 -->
+    <bean id="springContextHolder" class="com.cnfwsy.core.api.SpringContextHolder"></bean>
+
+    <!-- 引入jdbc配置文件 -->
+    <!--<context:property-placeholder location="classpath:conf/jdbc_slave.properties"/>-->
+
+    <bean id="propertyConfigurer" class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+        <property name="locations">
+            <list>
+                <value>classpath:conf/props/jdbc_master.properties</value>
+                <value>classpath:conf/props/jdbc_slave.properties</value>
+                <!--<value>file:/home/sky/conf/jdbc_slave.properties</value>-->
+                <!--<value>classpath:conf/redis.properties</value>-->
+                <value>classpath:conf/props/email.properties</value>
+            </list>
+        </property>
+    </bean>
+
+    <!--主库-->
+    <bean id="masterDataSource" class="com.alibaba.druid.pool.DruidDataSource" init-method="init" destroy-method="close">
+        <property name="driverClassName" value="${jdbc.master.driver}"/>
+        <property name="url" value="${jdbc.master.url}"/>
+        <property name="username" value="${jdbc.master.username}"/>
+        <property name="password" value="${jdbc.master.password}"/>
+        <!-- 连接池最大使用连接数 -->
+        <property name="maxActive" value="20"/>
+        <!-- 初始化连接大小 -->
+        <property name="initialSize" value="1"/>
+        <!-- 获取连接最大等待时间 -->
+        <property name="maxWait" value="60000"/>
+        <!-- 连接池最小空闲 -->
+        <property name="minIdle" value="3"/>
+        <!-- 自动清除无用连接 -->
+        <property name="removeAbandoned" value="true"/>
+        <!-- 清除无用连接的等待时间 -->
+        <property name="removeAbandonedTimeout" value="180"/>
+        <!-- 连接属性 -->
+        <property name="connectionProperties" value="clientEncoding=UTF-8"/>
+
+        <!-- 监控数据库 -->
+        <!-- <property name="filters" value="stat" /> -->
+        <property name="filters" value="mergeStat"/>
+    </bean>
+
+    <!--从库-->
+    <bean id="slave01DataSource" class="com.alibaba.druid.pool.DruidDataSource" init-method="init" destroy-method="close">
+        <property name="driverClassName" value="${jdbc.slave01.driver}"/>
+        <property name="url" value="${jdbc.slave01.url}"/>
+        <property name="username" value="${jdbc.slave01.username}"/>
+        <property name="password" value="${jdbc.slave01.password}"/>
+        <!-- 连接池最大使用连接数 -->
+        <property name="maxActive" value="20"/>
+        <!-- 初始化连接大小 -->
+        <property name="initialSize" value="1"/>
+        <!-- 获取连接最大等待时间 -->
+        <property name="maxWait" value="60000"/>
+        <!-- 连接池最小空闲 -->
+        <property name="minIdle" value="3"/>
+        <!-- 自动清除无用连接 -->
+        <property name="removeAbandoned" value="true"/>
+        <!-- 清除无用连接的等待时间 -->
+        <property name="removeAbandonedTimeout" value="180"/>
+        <!-- 连接属性 -->
+        <property name="connectionProperties" value="clientEncoding=UTF-8"/>
+
+        <!-- 监控数据库 -->
+        <!-- <property name="filters" value="stat" /> -->
+        <property name="filters" value="mergeStat"/>
+    </bean>
+
+
+    <!-- 定义数据源，使用自己实现的数据源 -->
+    <bean id="dataSource" class="com.cnfwsy.core.api.DynamicDataSource">
+        <!-- 设置多个数据源 -->
+        <property name="targetDataSources">
+            <map key-type="java.lang.String">
+                <!-- 这个key需要和程序中的key一致 -->
+                <entry key="master" value-ref="masterDataSource"/>
+                <entry key="slave" value-ref="slave01DataSource"/>
+            </map>
+        </property>
+        <!-- 设置默认的数据源，这里默认走写库 -->
+        <property name="defaultTargetDataSource" ref="masterDataSource"/>
+    </bean>
+
+
+    <!-- mybatis文件配置，扫描所有mapper文件 -->
+    <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean" p:dataSource-ref="dataSource"          p:configLocation="classpath:conf/xmls/mybatis-config.xml" p:mapperLocations="classpath:mapper/**/*.xml"/>
+
+    <!-- spring与mybatis整合配置，扫描所有dao -->
+    <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer" p:basePackage="com.cnfwsy.*.mapper"          p:sqlSessionFactoryBeanName="sqlSessionFactory"/>
+
+    <!-- 对数据源进行事务管理 -->
+    <bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager"          p:dataSource-ref="dataSource"/>
+
+    <!--注解方式配置事务-->
+    <tx:annotation-driven transaction-manager="transactionManager"/>
+
+    <!-- 配置事务属性 -->
+    <tx:advice id="txAdvice" transaction-manager="transactionManager">
+        <tx:attributes>
+            <tx:method name="edit*" propagation="REQUIRED"/>
+            <tx:method name="add*" propagation="REQUIRED"/>
+            <tx:method name="del*" propagation="REQUIRED"/>
+            <tx:method name="new*" propagation="REQUIRED"/>
+            <tx:method name="create*" propagation="REQUIRED"/>
+
+            <tx:method name="get*" read-only="true"/>
+            <tx:method name="query*" read-only="true"/>
+            <tx:method name="search*" read-only="true"/>
+            <tx:method name="list*" read-only="true"/>
+            <tx:method name="find*" read-only="true"/>
+
+            <tx:method name="*" propagation="SUPPORTS"/>
+        </tx:attributes>
+    </tx:advice>
+
+    <!--定义在action包或者子包里的任意类的任意方法的执行-->
+    <aop:config>
+        <aop:pointcut expression="execution(* com.cnfwsy.interfaces.model..*Impl.*(..))" id="txPointCut"/>
+        <aop:advisor advice-ref="txAdvice" pointcut-ref="txPointCut"/>
+    </aop:config>
+
+    <!--使用AspectJ方式配置AOP-->
+    <!-- 激活组件扫描功能,在包com.cnfwsy.core.aspect及其子包下面自动扫描通过注解配置的组件 -->
+    <aop:aspectj-autoproxy proxy-target-class="true"/>
+
+
+    <bean id="securityAspect" class="com.cnfwsy.core.api.SecurityAspect">
+        <property name="tokenManager" ref="tokenManager"/>
+        <property name="tokenName" value="X-Token"/>
+    </bean>
+
+    <bean id="propertyConfigurer2" class="com.cnfwsy.core.utils.PropertiesUtils">
+        <property name="locations">
+            <list>
+                <value>classpath:conf/props/ignore_uris.properties</value>
+            </list>
+        </property>
+    </bean>
+
+    <aop:config>
+        <aop:aspect ref="securityAspect">
+            <aop:around method="execute"
+                        pointcut="@annotation(org.springframework.web.bind.annotation.RequestMapping)"/>
+        </aop:aspect>
+    </aop:config>
+
+
+    <bean class="com.cnfwsy.core.api.DataSourceAspect" id="dataSourceAspect">
+        <!-- 指定事务策略 -->
+        <property name="txAdvice" ref="txAdvice"/>
+        <!-- 指定slave方法的前缀（非必须） -->
+        <property name="slaveMethodStart" value="query,find,get"/>
+    </bean>
+
+
+
+    <!--配置异常映射路径 -->
+    <bean id="exceptionResolver" class="com.cnfwsy.core.exception.PlatformMappingExceptionResolver">
+        <property name="exceptionMappings">
+            <props>
+                <prop key="com.cnfwsy.core.exception.AuthorizationException">redirect:/login.html</prop>
+                <prop key="com.cnfwsy.core.exception.BusinessException">errorpage/404</prop>
+                <prop key="java.lang.Exception">errorpage/404</prop>
+            </props>
+        </property>
+    </bean>
+
+    <import resource="classpath:conf/xmls/spring-mail.xml"/>
+    <import resource="classpath:conf/xmls/spring-quartz.xml"/>
+
+
+    <!-- redis session
+     <bean class="org.springframework.session.data.redis.config.annotation.web.http.RedisHttpSessionConfiguration"/>
+     <bean id="jedisConnectionFactory" class="org.springframework.data.redis.connection.jedis.JedisConnectionFactory">
+         &lt;!&ndash; redis 配置 &ndash;&gt;
+         <property name="hostName" value="${redis.host}"/>
+         <property name="password" value="${redis.pass}"/>
+         <property name="port" value="${redis.port}"/>
+     </bean>-->
+</beans>

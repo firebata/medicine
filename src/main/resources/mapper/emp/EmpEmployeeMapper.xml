@@ -1,0 +1,283 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cnfwsy.interfaces.mapper.emp.EmpEmployeeMapper">
+
+    <sql id="searchInfoSql">
+        `id` AS id,
+        `academic_name` AS  academicName,
+        `website` AS  website,
+        `sex_id` AS  sexId,
+        `state_id` AS  stateId,
+        `employee_id` AS  employeeId,
+        `seniority_id` AS  seniorityId,
+        `update_time` AS  updateTime,
+        `del_flag` AS  delFlag,
+        `account_id` AS  accountId,
+        `one_word` AS  oneWord,
+        `cur_position_id` AS  curPositionId,
+        `area_id` AS  areaId,
+        `mail_box` AS  mailBox,
+        `academic_id` AS  academicId,
+        `state_name` AS  stateName,
+        `phone` AS  phone,
+        `create_time` AS  createTime,
+        `sex_name` AS  sexName,
+        `name` AS  name,
+        `id` AS  id,
+        `icon_path` AS  iconPath,
+        `seniority_name` AS  seniorityName
+    </sql>
+
+
+    <select id="queryInfo" resultType="com.cnfwsy.interfaces.bean.emp.EmpEmployee">
+        select
+        <include refid="searchInfoSql"/>
+        FROM    t_emp_employee a
+        WHERE
+            `employee_id` = #{employeeId}
+        limit 1
+    </select>
+
+    <select id="queryInfoByAccountId" resultType="com.cnfwsy.interfaces.bean.emp.EmpEmployee">
+        select
+        <include refid="searchInfoSql"/>
+        FROM    t_emp_employee a
+        WHERE
+        `account_id` = #{accountId}
+        and del_flag=0
+        limit 1
+    </select>
+
+    <select id="listInfosCounts" resultType="Integer">
+        SELECT COUNT(*)
+        FROM  t_emp_employee a
+        where `del_flag`=0
+    </select>
+
+    <select id="listFilteredInfosCounts" resultType="Integer">
+        SELECT COUNT(*)
+        FROM  t_emp_employee
+        where `del_flag`=0
+         <if test="academicName !=null and academicName != ''">
+            and  `academic_name`  =#{academicName}
+         </if>
+         <if test="website !=null and website != ''">
+            and  `website`  =#{website}
+         </if>
+         <if test="sexId !=null and sexId != ''">
+            and  `sex_id`  =#{sexId}
+         </if>
+         <if test="stateId !=null and stateId != ''">
+            and  `state_id`  =#{stateId}
+         </if>
+         <if test="employeeId !=null and employeeId != ''">
+            and  `employee_id`  =#{employeeId}
+         </if>
+         <if test="seniorityId !=null and seniorityId != ''">
+            and  `seniority_id`  =#{seniorityId}
+         </if>
+         <if test="updateTime !=null and updateTime != ''">
+            and  `update_time`  =#{updateTime}
+         </if>
+         <if test="delFlag !=null and delFlag != ''">
+            and  `del_flag`  =#{delFlag}
+         </if>
+         <if test="accountId !=null and accountId != ''">
+            and  `account_id`  =#{accountId}
+         </if>
+         <if test="oneWord !=null and oneWord != ''">
+            and  `one_word`  =#{oneWord}
+         </if>
+         <if test="curPositionId !=null and curPositionId != ''">
+            and  `cur_position_id`  =#{curPositionId}
+         </if>
+         <if test="areaId !=null and areaId != ''">
+            and  `area_id`  =#{areaId}
+         </if>
+         <if test="mailBox !=null and mailBox != ''">
+            and  `mail_box`  =#{mailBox}
+         </if>
+         <if test="academicId !=null and academicId != ''">
+            and  `academic_id`  =#{academicId}
+         </if>
+         <if test="stateName !=null and stateName != ''">
+            and  `state_name`  =#{stateName}
+         </if>
+         <if test="phone !=null and phone != ''">
+            and  `phone`  =#{phone}
+         </if>
+         <if test="createTime !=null and createTime != ''">
+            and  `create_time`  =#{createTime}
+         </if>
+         <if test="sexName !=null and sexName != ''">
+            and  `sex_name`  =#{sexName}
+         </if>
+         <if test="name !=null and name != ''">
+            and  `name`  =#{name}
+         </if>
+         <if test="id !=null and id != ''">
+            and  `id`  =#{id}
+         </if>
+         <if test="iconPath !=null and iconPath != ''">
+            and  `icon_path`  =#{iconPath}
+         </if>
+         <if test="seniorityName !=null and seniorityName != ''">
+            and  `seniority_name`  =#{seniorityName}
+         </if>
+    </select>
+
+    <select id="searchInfos" resultType="com.cnfwsy.interfaces.bean.emp.EmpEmployee">
+        SELECT
+        <include refid="searchInfoSql"/>
+        FROM  t_emp_employee a
+        WHERE del_flag=0
+        <if test="academicName !=null and academicName != ''">
+            and  `academic_name`  =#{academicName}
+        </if>
+        <if test="website !=null and website != ''">
+            and  `website`  =#{website}
+        </if>
+        <if test="sexId !=null and sexId != ''">
+            and  `sex_id`  =#{sexId}
+        </if>
+        <if test="stateId !=null and stateId != ''">
+            and  `state_id`  =#{stateId}
+        </if>
+        <if test="employeeId !=null and employeeId != ''">
+            and  `employee_id`  =#{employeeId}
+        </if>
+        <if test="seniorityId !=null and seniorityId != ''">
+            and  `seniority_id`  =#{seniorityId}
+        </if>
+        <if test="updateTime !=null and updateTime != ''">
+            and  `update_time`  =#{updateTime}
+        </if>
+        <if test="delFlag !=null and delFlag != ''">
+            and  `del_flag`  =#{delFlag}
+        </if>
+        <if test="accountId !=null and accountId != ''">
+            and  `account_id`  =#{accountId}
+        </if>
+        <if test="oneWord !=null and oneWord != ''">
+            and  `one_word`  =#{oneWord}
+        </if>
+        <if test="curPositionId !=null and curPositionId != ''">
+            and  `cur_position_id`  =#{curPositionId}
+        </if>
+        <if test="areaId !=null and areaId != ''">
+            and  `area_id`  =#{areaId}
+        </if>
+        <if test="mailBox !=null and mailBox != ''">
+            and  `mail_box`  =#{mailBox}
+        </if>
+        <if test="academicId !=null and academicId != ''">
+            and  `academic_id`  =#{academicId}
+        </if>
+        <if test="stateName !=null and stateName != ''">
+            and  `state_name`  =#{stateName}
+        </if>
+        <if test="phone !=null and phone != ''">
+            and  `phone`  =#{phone}
+        </if>
+        <if test="createTime !=null and createTime != ''">
+            and  `create_time`  =#{createTime}
+        </if>
+        <if test="sexName !=null and sexName != ''">
+            and  `sex_name`  =#{sexName}
+        </if>
+        <if test="name !=null and name != ''">
+            and  `name`  =#{name}
+        </if>
+        <if test="id !=null and id != ''">
+            and  `id`  =#{id}
+        </if>
+        <if test="iconPath !=null and iconPath != ''">
+            and  `icon_path`  =#{iconPath}
+        </if>
+        <if test="seniorityName !=null and seniorityName != ''">
+            and  `seniority_name`  =#{seniorityName}
+        </if>
+        limit #{start},#{pageSize}
+    </select>
+
+    <update id="updateInfo">
+        update
+            t_emp_employee  a
+        <set>
+            <if test="academicName !=null and academicName != ''">
+                `academic_name`  = #{academicName},
+            </if>
+            <if test="website !=null and website != ''">
+                `website`  = #{website},
+            </if>
+            <if test="sexId !=null and sexId != ''">
+                `sex_id`  = #{sexId},
+            </if>
+            <if test="stateId !=null and stateId != ''">
+                `state_id`  = #{stateId},
+            </if>
+            <if test="employeeId !=null and employeeId != ''">
+                `employee_id`  = #{employeeId},
+            </if>
+            <if test="seniorityId !=null and seniorityId != ''">
+                `seniority_id`  = #{seniorityId},
+            </if>
+            <if test="accountId !=null and accountId != ''">
+                `account_id`  = #{accountId},
+            </if>
+            <if test="oneWord !=null and oneWord != ''">
+                `one_word`  = #{oneWord},
+            </if>
+            <if test="curPositionId !=null and curPositionId != ''">
+                `cur_position_id`  = #{curPositionId},
+            </if>
+            <if test="areaId !=null and areaId != ''">
+                `area_id`  = #{areaId},
+            </if>
+            <if test="mailBox !=null and mailBox != ''">
+                `mail_box`  = #{mailBox},
+            </if>
+            <if test="academicId !=null and academicId != ''">
+                `academic_id`  = #{academicId},
+            </if>
+            <if test="stateName !=null and stateName != ''">
+                `state_name`  = #{stateName},
+            </if>
+            <if test="phone !=null and phone != ''">
+                `phone`  = #{phone},
+            </if>
+            <if test="sexName !=null and sexName != ''">
+                `sex_name`  = #{sexName},
+            </if>
+            <if test="name !=null and name != ''">
+                `name`  = #{name},
+            </if>
+            <if test="iconPath !=null and iconPath != ''">
+                `icon_path`  = #{iconPath},
+            </if>
+            <if test="seniorityName !=null and seniorityName != ''">
+                `seniority_name`  = #{seniorityName},
+            </if>
+        </set>
+        WHERE
+            `employee_id` = #{employeeId}
+    </update>
+
+    <update id="del">
+        update  t_emp_employee a
+        set  `del_flag`=1
+        where
+            `employee_id` = #{employeeId}
+    </update>
+
+
+    <insert id="add">
+        insert into
+        t_emp_employee(`academic_name`,`website`,`sex_id`,`state_id`,`employee_id`,`seniority_id`,`account_id`,`one_word`,`cur_position_id`,`area_id`,`mail_box`,`academic_id`,`state_name`,`phone`,`sex_name`,`name`,`icon_path`,`seniority_name`)
+        values (#{academicName},#{website},#{sexId},#{stateId},#{employeeId},#{seniorityId},#{accountId},#{oneWord},#{curPositionId},#{areaId},#{mailBox},#{academicId},#{stateName},#{phone},#{sexName},#{name},#{iconPath},#{seniorityName})
+    </insert>
+
+
+</mapper>

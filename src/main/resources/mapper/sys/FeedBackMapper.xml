@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cnfwsy.interfaces.mapper.sys.FeedBackMapper">
+
+
+    <sql id="searchInfoSql">
+        `id` AS id,
+        `create_time` AS  createTime,
+        `name` AS  name,
+        `content` AS  content,
+        `id` AS  id,
+        `email` AS  email,
+        `del_flag` AS  delFlag,
+        `feed_id` AS  feedId,
+        `tel` AS  tel
+    </sql>
+
+
+    <select id="queryInfo" resultType="com.cnfwsy.interfaces.bean.sys.FeedBackVo">
+        select
+        <include refid="searchInfoSql"/>
+        FROM    t_sys_feedback a
+        WHERE
+        `feed_id` = #{feedId}
+        limit 1
+    </select>
+
+
+    <select id="listInfosCounts" resultType="Integer">
+        SELECT COUNT(*)
+        FROM  t_sys_feedback a
+        where `del_flag`=0
+    </select>
+
+
+    <select id="listFilteredInfosCounts" resultType="Integer">
+        SELECT COUNT(*)
+        FROM  t_sys_feedback
+        where `del_flag`=0
+        <if test="createTime !=null and createTime != ''">
+            and  `create_time`  =#{createTime}
+        </if>
+        <if test="name !=null and name != ''">
+            and  `name`  =#{name}
+        </if>
+        <if test="content !=null and content != ''">
+            and  `content`  =#{content}
+        </if>
+        <if test="id !=null and id != ''">
+            and  `id`  =#{id}
+        </if>
+        <if test="email !=null and email != ''">
+            and  `email`  =#{email}
+        </if>
+        <if test="idx !=null and idx != ''">
+            and  `idx`  =#{idx}
+        </if>
+        <if test="delFlag !=null and delFlag != ''">
+            and  `del_flag`  =#{delFlag}
+        </if>
+        <if test="feedId !=null and feedId != ''">
+            and  `feed_id`  =#{feedId}
+        </if>
+        <if test="tel !=null and tel != ''">
+            and  `tel`  =#{tel}
+        </if>
+    </select>
+
+    <select id="searchInfos" resultType="com.cnfwsy.interfaces.bean.sys.FeedBackVo">
+        SELECT
+        <include refid="searchInfoSql"/>
+        FROM  t_sys_feedback a
+        WHERE del_flag=0
+        <if test="createTime !=null and createTime != ''">
+            and  `create_time`  =#{createTime}
+        </if>
+        <if test="name !=null and name != ''">
+            and  `name`  =#{name}
+        </if>
+        <if test="content !=null and content != ''">
+            and  `content`  =#{content}
+        </if>
+        <if test="id !=null and id != ''">
+            and  `id`  =#{id}
+        </if>
+        <if test="email !=null and email != ''">
+            and  `email`  =#{email}
+        </if>
+        <if test="idx !=null and idx != ''">
+            and  `idx`  =#{idx}
+        </if>
+        <if test="delFlag !=null and delFlag != ''">
+            and  `del_flag`  =#{delFlag}
+        </if>
+        <if test="feedId !=null and feedId != ''">
+            and  `feed_id`  =#{feedId}
+        </if>
+        <if test="tel !=null and tel != ''">
+            and  `tel`  =#{tel}
+        </if>
+        limit #{start},#{pageSize}
+    </select>
+
+    <update id="updateInfo">
+        update
+        t_sys_feedback  a
+        <set>
+            <if test="name !=null and name != ''">
+                `name`  = #{name},
+            </if>
+            <if test="content !=null and content != ''">
+                `content`  = #{content},
+            </if>
+            <if test="email !=null and email != ''">
+                `email`  = #{email},
+            </if>
+
+            <if test="feedId !=null and feedId != ''">
+                `feed_id`  = #{feedId},
+            </if>
+            <if test="tel !=null and tel != ''">
+                `tel`  = #{tel},
+            </if>
+        </set>
+        WHERE
+        `feed_id` = #{feedId}
+    </update>
+
+    <update id="del">
+        update  t_sys_feedback a
+        set  `del_flag`=1
+        where
+        `feed_id` = #{feedId}
+    </update>
+
+
+    <insert id="add">
+        insert into
+          t_sys_feedback(`name`,`content`,`email`,`feed_id`,`tel`)
+        values (#{name},#{content},#{email},#{feedId},#{tel})
+    </insert>
+
+
+</mapper>

@@ -1,0 +1,193 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cnfwsy.interfaces.mapper.emp.EmpResEduMapper">
+
+    <sql id="searchInfoSql">
+        `id` AS id,
+        `university_name` AS  universityName,
+        `academic_name` AS  academicName,
+        `start_year` AS  startYear,
+        `update_time` AS  updateTime,
+        `del_flag` AS  delFlag,
+        `end_year` AS  endYear,
+        `university_id` AS  universityId,
+        `graduate_date` AS  graduateDate,
+        `resume_id` AS  resumeId,
+        `academic_id` AS  academicId,
+        `create_time` AS  createTime,
+        `speciality_name` AS  specialityName,
+        `id` AS  id,
+        `speciality_id` AS  specialityId
+    </sql>
+
+
+    <select id="queryInfo" resultType="com.cnfwsy.interfaces.bean.emp.EmpResEdu">
+        select
+        <include refid="searchInfoSql"/>
+        FROM    t_emp_res_edu a
+        WHERE
+            `university_id` = #{universityId}
+        limit 1
+    </select>
+
+    <select id="listInfosCounts" resultType="Integer">
+        SELECT COUNT(*)
+        FROM  t_emp_res_edu a
+        where `del_flag`=0
+    </select>
+
+    <select id="listFilteredInfosCounts" resultType="Integer">
+        SELECT COUNT(*)
+        FROM  t_emp_res_edu
+        where `del_flag`=0
+         <if test="universityName !=null and universityName != ''">
+            and  `university_name`  =#{universityName}
+         </if>
+         <if test="academicName !=null and academicName != ''">
+            and  `academic_name`  =#{academicName}
+         </if>
+         <if test="startYear !=null and startYear != ''">
+            and  `start_year`  =#{startYear}
+         </if>
+         <if test="updateTime !=null and updateTime != ''">
+            and  `update_time`  =#{updateTime}
+         </if>
+         <if test="delFlag !=null and delFlag != ''">
+            and  `del_flag`  =#{delFlag}
+         </if>
+         <if test="endYear !=null and endYear != ''">
+            and  `end_year`  =#{endYear}
+         </if>
+         <if test="universityId !=null and universityId != ''">
+            and  `university_id`  =#{universityId}
+         </if>
+         <if test="graduateDate !=null and graduateDate != ''">
+            and  `graduate_date`  =#{graduateDate}
+         </if>
+         <if test="resumeId !=null and resumeId != ''">
+            and  `resume_id`  =#{resumeId}
+         </if>
+         <if test="academicId !=null and academicId != ''">
+            and  `academic_id`  =#{academicId}
+         </if>
+         <if test="createTime !=null and createTime != ''">
+            and  `create_time`  =#{createTime}
+         </if>
+         <if test="specialityName !=null and specialityName != ''">
+            and  `speciality_name`  =#{specialityName}
+         </if>
+         <if test="id !=null and id != ''">
+            and  `id`  =#{id}
+         </if>
+         <if test="specialityId !=null and specialityId != ''">
+            and  `speciality_id`  =#{specialityId}
+         </if>
+    </select>
+
+    <select id="searchInfos" resultType="com.cnfwsy.interfaces.bean.emp.EmpResEdu">
+        SELECT
+        <include refid="searchInfoSql"/>
+        FROM  t_emp_res_edu a
+        WHERE del_flag=0
+        <if test="universityName !=null and universityName != ''">
+            and  `university_name`  =#{universityName}
+        </if>
+        <if test="academicName !=null and academicName != ''">
+            and  `academic_name`  =#{academicName}
+        </if>
+        <if test="startYear !=null and startYear != ''">
+            and  `start_year`  =#{startYear}
+        </if>
+        <if test="updateTime !=null and updateTime != ''">
+            and  `update_time`  =#{updateTime}
+        </if>
+        <if test="delFlag !=null and delFlag != ''">
+            and  `del_flag`  =#{delFlag}
+        </if>
+        <if test="endYear !=null and endYear != ''">
+            and  `end_year`  =#{endYear}
+        </if>
+        <if test="universityId !=null and universityId != ''">
+            and  `university_id`  =#{universityId}
+        </if>
+        <if test="graduateDate !=null and graduateDate != ''">
+            and  `graduate_date`  =#{graduateDate}
+        </if>
+        <if test="resumeId !=null and resumeId != ''">
+            and  `resume_id`  =#{resumeId}
+        </if>
+        <if test="academicId !=null and academicId != ''">
+            and  `academic_id`  =#{academicId}
+        </if>
+        <if test="createTime !=null and createTime != ''">
+            and  `create_time`  =#{createTime}
+        </if>
+        <if test="specialityName !=null and specialityName != ''">
+            and  `speciality_name`  =#{specialityName}
+        </if>
+        <if test="id !=null and id != ''">
+            and  `id`  =#{id}
+        </if>
+        <if test="specialityId !=null and specialityId != ''">
+            and  `speciality_id`  =#{specialityId}
+        </if>
+        limit #{start},#{pageSize}
+    </select>
+
+    <update id="updateInfo">
+        update
+            t_emp_res_edu  a
+        <set>
+            <if test="universityName !=null and universityName != ''">
+                `university_name`  = #{universityName},
+            </if>
+            <if test="academicName !=null and academicName != ''">
+                `academic_name`  = #{academicName},
+            </if>
+            <if test="universityId !=null and universityId != ''">
+                `university_id`  = #{universityId},
+            </if>
+            <if test="graduateDate !=null and graduateDate != ''">
+                `graduate_date`  = #{graduateDate},
+            </if>
+            <if test="resumeId !=null and resumeId != ''">
+                `resume_id`  = #{resumeId},
+            </if>
+            <if test="academicId !=null and academicId != ''">
+                `academic_id`  = #{academicId},
+            </if>
+            <if test="specialityName !=null and specialityName != ''">
+                `speciality_name`  = #{specialityName},
+            </if>
+            <if test="startYear !=null and startYear != ''">
+                `start_year`  = #{startYear},
+            </if>
+            <if test="specialityId !=null and specialityId != ''">
+                `speciality_id`  = #{specialityId},
+            </if>
+            <if test="endYear !=null and endYear != ''">
+                `end_year`  = #{endYear},
+            </if>
+        </set>
+        WHERE
+            `university_id` = #{universityId}
+    </update>
+
+    <update id="del">
+        update  t_emp_res_edu a
+        set  `del_flag`=1
+        where
+            `university_id` = #{universityId}
+    </update>
+
+
+    <insert id="add">
+        insert into
+        t_emp_res_edu(`university_name`,`academic_name`,`university_id`,`graduate_date`,`resume_id`,`academic_id`,`speciality_name`,`start_year`,`speciality_id`,`end_year`)
+        values (#{universityName},#{academicName},#{universityId},#{graduateDate},#{resumeId},#{academicId},#{specialityName},#{startYear},#{specialityId},#{endYear})
+    </insert>
+
+
+</mapper>

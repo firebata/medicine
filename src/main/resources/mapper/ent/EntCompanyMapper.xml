@@ -1,0 +1,435 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cnfwsy.interfaces.mapper.ent.EntCompanyMapper">
+
+    <sql id="searchInfoSql">
+        `id` AS id,
+        `company_size_id` AS  companySizeId,
+        `third_kind` AS  thirdKind,
+        `company_name` AS  companyName,
+        `city_id` AS  cityId,
+        `contact_man` AS  contactMan,
+        `del_flag` AS  delFlag,
+        `province_id` AS  provinceId,
+        `com_url` AS  comUrl,
+        `city_name` AS  cityName,
+        `company_logo_url` AS  companyLogoUrl,
+        `area_name` AS  areaName,
+        `id` AS  id,
+        `email` AS  email,
+        `company_type_name` AS  companyTypeName,
+        `summary` AS  summary,
+        `company_size_name` AS  companySizeName,
+        `third_id` AS  thirdId,
+        `mobile` AS  mobile,
+        `telephone` AS  telephone,
+        `update_time` AS  updateTime,
+        `company_licence_url` AS  companyLicenceUrl,
+        `url` AS  url,
+        `company_id` AS  companyId,
+        `area_id` AS  areaId,
+        `create_time` AS  createTime,
+        `company_address` AS  companyAddress,
+        `step` AS  step,
+        `company_type_id` AS  companyTypeId,
+        `province_name` AS  provinceName ,
+        `status` AS  status,
+        `industry_id` AS industryId,
+        `industry_name` AS industryName,
+        `industry_id2` AS industryId2,
+        `industry_name2` AS industryName2
+    </sql>
+
+    <sql id="listSql">
+        `id` AS id,
+        `company_size_id` AS  companySizeId,
+        `third_kind` AS  thirdKind,
+        `company_name` AS  companyName,
+        `city_id` AS  cityId,
+        `contact_man` AS  contactMan,
+        `del_flag` AS  delFlag,
+        `province_id` AS  provinceId,
+        `com_url` AS  comUrl,
+        `city_name` AS  cityName,
+        `company_logo_url` AS  companyLogoUrl,
+        `area_name` AS  areaName,
+        `id` AS  id,
+        '' AS  email,
+        `company_type_name` AS  companyTypeName,
+        '' AS  summary,
+        `company_size_name` AS  companySizeName,
+        `third_id` AS  thirdId,
+        '' AS  mobile,
+        '' AS  telephone,
+        `update_time` AS  updateTime,
+        `company_licence_url` AS  companyLicenceUrl,
+        `url` AS  url,
+        `company_id` AS  companyId,
+        `area_id` AS  areaId,
+        `create_time` AS  createTime,
+        '' AS  companyAddress,
+        `step` AS  step,
+        `company_type_id` AS  companyTypeId,
+        `province_name` AS  provinceName ,
+        `status` AS  status,
+        `industry_id` AS industryId,
+        `industry_name` AS industryName,
+        `industry_id2` AS industryId2,
+        `industry_name2` AS industryName2
+    </sql>
+
+    <select id="queryInfo" resultType="com.cnfwsy.interfaces.bean.ent.EntCompany">
+        select
+        <include refid="searchInfoSql"/>
+        FROM    t_ent_company a
+        WHERE
+            `company_id` = #{companyId}
+        limit 1
+    </select>
+
+    <select id="listInfosCounts" resultType="Integer">
+        SELECT COUNT(*)
+        FROM  t_ent_company a
+        where `del_flag`=0
+    </select>
+
+    <select id="listFilteredInfosCounts" resultType="Integer">
+        SELECT COUNT(*)
+        FROM  t_ent_company
+        where `del_flag`=0
+         <if test="companySizeId !=null and companySizeId != ''">
+            and  `company_size_id`  =#{companySizeId}
+         </if>
+         <if test="thirdKind !=null and thirdKind != ''">
+            and  `third_kind`  =#{thirdKind}
+         </if>
+         <if test="companyName !=null and companyName != ''">
+            and  `company_name`  =#{companyName}
+         </if>
+         <if test="cityId !=null and cityId != ''">
+            and  `city_id`  =#{cityId}
+         </if>
+         <if test="contactMan !=null and contactMan != ''">
+            and  `contact_man`  =#{contactMan}
+         </if>
+         <if test="delFlag !=null and delFlag != ''">
+            and  `del_flag`  =#{delFlag}
+         </if>
+         <if test="provinceId !=null and provinceId != ''">
+            and  `province_id`  =#{provinceId}
+         </if>
+         <if test="comUrl !=null and comUrl != ''">
+            and  `com_url`  =#{comUrl}
+         </if>
+         <if test="cityName !=null and cityName != ''">
+            and  `city_name`  =#{cityName}
+         </if>
+         <if test="companyLogoUrl !=null and companyLogoUrl != ''">
+            and  `company_logo_url`  =#{companyLogoUrl}
+         </if>
+         <if test="areaName !=null and areaName != ''">
+            and  `area_name`  =#{areaName}
+         </if>
+         <if test="id !=null and id != ''">
+            and  `id`  =#{id}
+         </if>
+         <if test="email !=null and email != ''">
+            and  `email`  =#{email}
+         </if>
+         <if test="companyTypeName !=null and companyTypeName != ''">
+            and  `company_type_name`  =#{companyTypeName}
+         </if>
+         <if test="summary !=null and summary != ''">
+            and  `summary`  =#{summary}
+         </if>
+         <if test="companySizeName !=null and companySizeName != ''">
+            and  `company_size_name`  =#{companySizeName}
+         </if>
+         <if test="thirdId !=null and thirdId != ''">
+            and  `third_id`  =#{thirdId}
+         </if>
+         <if test="mobile !=null and mobile != ''">
+            and  `mobile`  =#{mobile}
+         </if>
+         <if test="telephone !=null and telephone != ''">
+            and  `telephone`  =#{telephone}
+         </if>
+         <if test="updateTime !=null and updateTime != ''">
+            and  `update_time`  =#{updateTime}
+         </if>
+         <if test="companyLicenceUrl !=null and companyLicenceUrl != ''">
+            and  `company_licence_url`  =#{companyLicenceUrl}
+         </if>
+         <if test="url !=null and url != ''">
+            and  `url`  =#{url}
+         </if>
+         <if test="companyId !=null and companyId != ''">
+            and  `company_id`  =#{companyId}
+         </if>
+         <if test="areaId !=null and areaId != ''">
+            and  `area_id`  =#{areaId}
+         </if>
+         <if test="createTime !=null and createTime != ''">
+            and  `create_time`  =#{createTime}
+         </if>
+         <if test="companyAddress !=null and companyAddress != ''">
+            and  `company_address`  =#{companyAddress}
+         </if>
+         <if test="step !=null and step != ''">
+            and  `step`  =#{step}
+         </if>
+         <if test="companyTypeId !=null and companyTypeId != ''">
+            and  `company_type_id`  =#{companyTypeId}
+         </if>
+         <if test="provinceName  !=null and provinceName  != ''">
+            and  `province_name`  =#{provinceName }
+         </if>
+         <if test="status !=null and status != ''">
+            and  `status`  =#{status}
+         </if>
+        <if test="industryId !=null and industryId != ''">
+            and  `industry_id`  = #{industryId}
+        </if>
+        <if test="industryName !=null and industryName != ''">
+            and  `industry_name`  = #{industryName}
+        </if>
+        <if test="industryId2 !=null and industryId2 != ''">
+            and  `industry_id2`  = #{industryId2}
+        </if>
+        <if test="industryName2 !=null and industryName2 != ''">
+            and  `industry_name2`  = #{industryName2}
+        </if>
+    </select>
+
+    <select id="searchInfos" resultType="com.cnfwsy.interfaces.bean.ent.EntCompany">
+        SELECT
+        <include refid="listSql"/>
+        FROM  t_ent_company a
+        WHERE del_flag=0
+        <if test="companySizeId !=null and companySizeId != ''">
+            and  `company_size_id`  =#{companySizeId}
+        </if>
+        <if test="thirdKind !=null and thirdKind != ''">
+            and  `third_kind`  =#{thirdKind}
+        </if>
+        <if test="companyName !=null and companyName != ''">
+            and  `company_name`  =#{companyName}
+        </if>
+        <if test="cityId !=null and cityId != ''">
+            and  `city_id`  =#{cityId}
+        </if>
+        <if test="contactMan !=null and contactMan != ''">
+            and  `contact_man`  =#{contactMan}
+        </if>
+        <if test="delFlag !=null and delFlag != ''">
+            and  `del_flag`  =#{delFlag}
+        </if>
+        <if test="provinceId !=null and provinceId != ''">
+            and  `province_id`  =#{provinceId}
+        </if>
+        <if test="comUrl !=null and comUrl != ''">
+            and  `com_url`  =#{comUrl}
+        </if>
+        <if test="cityName !=null and cityName != ''">
+            and  `city_name`  =#{cityName}
+        </if>
+        <if test="companyLogoUrl !=null and companyLogoUrl != ''">
+            and  `company_logo_url`  =#{companyLogoUrl}
+        </if>
+        <if test="areaName !=null and areaName != ''">
+            and  `area_name`  =#{areaName}
+        </if>
+        <if test="id !=null and id != ''">
+            and  `id`  =#{id}
+        </if>
+        <if test="email !=null and email != ''">
+            and  `email`  =#{email}
+        </if>
+        <if test="companyTypeName !=null and companyTypeName != ''">
+            and  `company_type_name`  =#{companyTypeName}
+        </if>
+        <if test="summary !=null and summary != ''">
+            and  `summary`  =#{summary}
+        </if>
+        <if test="companySizeName !=null and companySizeName != ''">
+            and  `company_size_name`  =#{companySizeName}
+        </if>
+        <if test="thirdId !=null and thirdId != ''">
+            and  `third_id`  =#{thirdId}
+        </if>
+        <if test="mobile !=null and mobile != ''">
+            and  `mobile`  =#{mobile}
+        </if>
+        <if test="telephone !=null and telephone != ''">
+            and  `telephone`  =#{telephone}
+        </if>
+        <if test="updateTime !=null and updateTime != ''">
+            and  `update_time`  =#{updateTime}
+        </if>
+        <if test="companyLicenceUrl !=null and companyLicenceUrl != ''">
+            and  `company_licence_url`  =#{companyLicenceUrl}
+        </if>
+        <if test="url !=null and url != ''">
+            and  `url`  =#{url}
+        </if>
+        <if test="companyId !=null and companyId != ''">
+            and  `company_id`  =#{companyId}
+        </if>
+        <if test="areaId !=null and areaId != ''">
+            and  `area_id`  =#{areaId}
+        </if>
+        <if test="createTime !=null and createTime != ''">
+            and  `create_time`  =#{createTime}
+        </if>
+        <if test="companyAddress !=null and companyAddress != ''">
+            and  `company_address`  =#{companyAddress}
+        </if>
+        <if test="step !=null and step != ''">
+            and  `step`  =#{step}
+        </if>
+        <if test="companyTypeId !=null and companyTypeId != ''">
+            and  `company_type_id`  =#{companyTypeId}
+        </if>
+        <if test="provinceName  !=null and provinceName  != ''">
+            and  `province_name`  =#{provinceName }
+        </if>
+        <if test="status !=null and status != ''">
+            and  `status`  =#{status}
+        </if>
+        <if test="industryId !=null and industryId != ''">
+            and  `industry_id`  = #{industryId}
+        </if>
+        <if test="industryName !=null and industryName != ''">
+            and  `industry_name`  = #{industryName}
+        </if>
+        <if test="industryId2 !=null and industryId2 != ''">
+            and  `industry_id2`  = #{industryId2}
+        </if>
+        <if test="industryName2 !=null and industryName2 != ''">
+            and  `industry_name2`  = #{industryName2}
+        </if>
+        limit #{start},#{pageSize}
+    </select>
+
+    <update id="updateInfo">
+        update
+            t_ent_company  a
+        <set>
+            <if test="companySizeId !=null and companySizeId != ''">
+                `company_size_id`  = #{companySizeId},
+            </if>
+            <if test="thirdKind !=null and thirdKind != ''">
+                `third_kind`  = #{thirdKind},
+            </if>
+            <if test="companyName !=null and companyName != ''">
+                `company_name`  = #{companyName},
+            </if>
+            <if test="cityId !=null and cityId != ''">
+                `city_id`  = #{cityId},
+            </if>
+            <if test="contactMan !=null and contactMan != ''">
+                `contact_man`  = #{contactMan},
+            </if>
+            <if test="provinceId !=null and provinceId != ''">
+                `province_id`  = #{provinceId},
+            </if>
+            <if test="comUrl !=null and comUrl != ''">
+                `com_url`  = #{comUrl},
+            </if>
+            <if test="cityName !=null and cityName != ''">
+                `city_name`  = #{cityName},
+            </if>
+            <if test="companyLogoUrl !=null and companyLogoUrl != ''">
+                `company_logo_url`  = #{companyLogoUrl},
+            </if>
+            <if test="areaName !=null and areaName != ''">
+                `area_name`  = #{areaName},
+            </if>
+            <if test="email !=null and email != ''">
+                `email`  = #{email},
+            </if>
+            <if test="companyTypeName !=null and companyTypeName != ''">
+                `company_type_name`  = #{companyTypeName},
+            </if>
+            <if test="summary !=null and summary != ''">
+                `summary`  = #{summary},
+            </if>
+            <if test="companySizeName !=null and companySizeName != ''">
+                `company_size_name`  = #{companySizeName},
+            </if>
+            <if test="thirdId !=null and thirdId != ''">
+                `third_id`  = #{thirdId},
+            </if>
+            <if test="mobile !=null and mobile != ''">
+                `mobile`  = #{mobile},
+            </if>
+            <if test="telephone !=null and telephone != ''">
+                `telephone`  = #{telephone},
+            </if>
+            <if test="companyLicenceUrl !=null and companyLicenceUrl != ''">
+                `company_licence_url`  = #{companyLicenceUrl},
+            </if>
+            <if test="url !=null and url != ''">
+                `url`  = #{url},
+            </if>
+            <if test="companyId !=null and companyId != ''">
+                `company_id`  = #{companyId},
+            </if>
+            <if test="areaId !=null and areaId != ''">
+                `area_id`  = #{areaId},
+            </if>
+            <if test="companyAddress !=null and companyAddress != ''">
+                `company_address`  = #{companyAddress},
+            </if>
+            <if test="step !=null and step != ''">
+                `step`  = #{step},
+            </if>
+            <if test="companyTypeId !=null and companyTypeId != ''">
+                `company_type_id`  = #{companyTypeId},
+            </if>
+            <if test="provinceName  !=null and provinceName  != ''">
+                `province_name`  = #{provinceName },
+            </if>
+            <if test="status !=null and status != ''">
+                `status`  = #{status},
+            </if>
+            <if test="industryId !=null and industryId != ''">
+                `industry_id`  = #{industryId},
+            </if>
+            <if test="industryName !=null and industryName != ''">
+                `industry_name`  = #{industryName},
+            </if>
+            <if test="industryId2 !=null and industryId2 != ''">
+                `industry_id2`  = #{industryId2},
+            </if>
+            <if test="industryName2 !=null and industryName2 != ''">
+                `industry_name2`  = #{industryName2},
+            </if>
+        </set>
+        WHERE
+            `company_id` = #{companyId}
+    </update>
+
+    <update id="del">
+        update  t_ent_company a
+        set  `del_flag`=1
+        where
+            `company_id` = #{companyId}
+    </update>
+
+
+    <insert id="add">
+        insert into
+        t_ent_company(`industry_id`,`industry_name`,`industry_id2`,`industry_name2`,`company_size_id`,`third_kind`,`company_name`,`city_id`,`contact_man`,`province_id`,`com_url`,`city_name`,`company_logo_url`,`area_name`,`email`,`company_type_name`,`summary`,`company_size_name`,`third_id`,`mobile`,`telephone`,`company_licence_url`,`url`,`company_id`,`area_id`,`company_address`,`step`,`company_type_id`,`province_name`,`status`)
+        values (#{industryId},#{industryName},#{industryId2},#{industryName2},#{companySizeId},#{thirdKind},#{companyName},#{cityId},#{contactMan},#{provinceId},#{comUrl},#{cityName},#{companyLogoUrl},#{areaName},#{email},#{companyTypeName},#{summary},#{companySizeName},#{thirdId},#{mobile},#{telephone},#{companyLicenceUrl},#{url},#{companyId},#{areaId},#{companyAddress},#{step},#{companyTypeId},#{provinceName },#{status})
+    </insert>
+
+    <update id="toAuth">
+         update  t_ent_company a
+          set  `status`=#{status}, `company_licence_url`  = #{companyLicenceUrl}
+          where
+            `company_id` = #{companyId}
+    </update>
+</mapper>

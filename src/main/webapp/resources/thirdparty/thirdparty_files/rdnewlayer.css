@@ -1,0 +1,778 @@
+/***弹窗错误提示***/
+.tip-x-validate-error {
+  background: url("http://img03.zhaopin.cn/2012/img/my/v5/resume_tipsicon.jpg") no-repeat scroll left center transparent;
+  color: #990100;
+  height: 20px;
+  line-height: 20px;
+  padding-left: 19px;
+}
+.email-layer-border .forwarding-layer-main .tip-x-validate-error {
+  margin-left:122px;
+}
+.email-layer-border .email-layer-input .tip-x-validate-error {
+  margin-left:0px;
+  line-height:22px;
+  margin-top:5px;
+}
+.email-layer-border .tip-x-validate-error {
+    margin-left:30px;
+}
+.complaints-layer-border .tip-x-validate-error {
+    margin-left:120px;
+}
+.email-layer-border .jobs-layer-main .tip-x-validate-error {
+  margin-left:120px;
+  display:inline;
+}
+/**保存到本地**/
+.save-layer {
+  width:414px;
+}
+.save-layer-body {
+  width:406px;
+  margin:auto;
+  padding:20px 0;
+  border-bottom: 1px dashed #CBCBCB;
+  overflow:hidden;
+  margin-bottom:10px;
+}
+.save-layer-main {
+  width:370px;
+  margin:auto;
+  line-height:25px;
+}
+.save-layer-name {
+  width:120px;
+  float:left;
+  text-align: right;
+  color:#555;
+  font-size:14px;
+}
+.save-layer-input {
+  float:left;
+  padding:0 5px;
+  color:#315aaa;
+}
+.save-layer-radio {
+  float: left;
+  height: 20px;
+  width: 20px;
+}
+.save-layer-radio input {
+  vertical-align: -2px;
+}
+/***发信通知***/
+.email-layer {
+  width:514px;
+  margin-bottom:10px;
+  padding-top:57px;
+  position:relative;
+}
+.email-layer-top {
+  width:514px;
+  height:32px;
+  position:absolute;
+  top:57px;
+  z-index:1000;
+}
+.email-layer-blank {
+  width:20px;
+  height:32px;
+  float:left;
+}
+.email-layer-list,.current {
+  width:94px;
+  height:30px;
+  float:left;
+  margin-left:10px;
+  border:1px solid  #999;
+  border-radius: 3px 3px 0 0;
+  line-height:30px;
+  text-align:center;
+  background-color:#999;
+  color:#fff;
+  cursor:pointer;
+}
+.current {
+  border-bottom:0;
+  background-color:#fff;
+  color:#333;
+}
+.email-layer-main,.email-layer-main-none {
+  width:514px;
+  margin-bottom:10px;
+  background:url(http://img02.zhaopin.cn/2012/img/rd/top_line.png) no-repeat;
+}
+.email-layer-border,.complaints-layer-border{
+  width:502px;
+  margin:0 auto 10px auto;
+  padding-bottom:5px;
+  border-bottom: 1px dashed #CBCBCB;
+  position:relative;
+}
+.email-layer-main-none {
+  display:none;
+  background:url(http://img02.zhaopin.cn/2012/img/rd/top_line_1.png) no-repeat;
+}
+.email-layer-body {
+  width:446px;
+  margin:auto;
+}
+.email-layer-row {
+  width:446px;
+  line-height:25px;
+  margin-top:10px;
+  color:#555;
+}
+.email-layer-name {
+  width:90px;  
+  height:25px;
+  float:left;
+  text-align:right;
+}
+.email-layer-input {
+  width:355px;
+  float:left;
+}
+.email-layer-input a {
+  text-decoration:underline;
+}
+.email-layer-none {
+  margin:0;
+}
+.email-layer-name span {
+  color:#FC830E;
+}
+.email-layer-input input {
+  width:256px;
+  height:21px;
+  line-height:21px;
+  padding-left:8px;
+  border:1px solid #7F9DB9;
+  color:#777;
+}
+::-webkit-input-placeholder { color: #777; }
+:-moz-placeholder { color: #777; }
+.email-layer-input select {
+  width:258px;
+  width:266px\9;
+  padding-left:6px;
+  border:1px solid #7F9DB9;
+  color:#555;
+  -moz-box-sizing: content-box;
+}
+.email-layer-input textarea {
+  width:328px;
+  height:118px;
+  border:1px solid #A5ACB2;
+  color:#555;
+  font-size:12px;
+}
+.email-layer-checkbox {
+  float:left;
+}
+.email-layer-tips {
+  width:330px;
+  height:30px;
+  line-height:30px;
+  float:left;
+}
+.email-layer-tips span {
+  color: #CB2121;
+  font-weight: bold;
+}
+.email-layer-checkbox {
+  float:left;
+}
+.email-layer-checkbox input {
+  margin-top:3px;
+}
+.email-layer-checkbox-left {
+  width:20px;
+  height:20px;
+  float:left;
+  margin-top:2px;
+  *margin-top:4px;
+}
+.email-layer-checkbox-right {
+  float:left;
+}
+.email-layer-words {
+  float:right;
+}
+.email-layer-words span {
+  font-weight:bold;
+  color:#CB2121;
+}
+.email-layer-briefing {
+  width:486px;
+  padding:10px 0;
+  margin:auto;
+  background-color:#fff0c6;
+}
+.email-layer-content {
+  width:460px;
+  margin:auto;
+  color:#555;
+  line-height:22px;
+}
+.email-layer-content span {
+  font-weight:bold;
+}
+.previewLayer-mag,.previewLayer-mag-none {
+  padding-bottom:20px;
+  margin-bottom:10px;
+  border-bottom: 1px dashed #CBCBCB;
+}
+.previewLayer-mag span {
+  font-weight:bold;
+  color:#c30b0b;
+}
+.previewLayer-mag-none {
+  border-bottom:0;
+}
+span.previewLayer-mag-color {
+  font-weight:400;
+  color:#315aaa;
+}
+
+/***短信成功***/
+.success-layer,.success-layer-all,.success-layer-email {
+  width:170px;
+  height:41px;
+  line-height:41px;
+  font-weight:bold;
+  font-size:14px;
+  margin:auto;
+  color:#555;
+}
+.success-layer-email {
+  width:230px;
+}
+.success-layer-email a {
+  margin-left:10px;
+  font-size:12px;
+  font-weight:400;
+  text-decoration:underline;
+}
+.success-layer-all {
+  height:25px;
+}
+.success-layer-img {
+  width:46px;
+  height:41px;
+  float:left;
+  background:url(http://img02.zhaopin.cn/2012/img/rd/rdTitle.png) 0 -82px no-repeat;
+}
+.success-layer-line {
+  width:124px;
+  height:25px;
+  font-size:12px;
+  margin-left:46px;
+  line-height:25px;
+  font-weight:400;
+}
+.success-layer-line span {
+  color:#C61C1C;
+  font-weight:bold;
+}
+.email-success-layer {
+  border-bottom: 1px dashed #CBCBCB;
+  padding-bottom:10px;
+}
+/***添加评语***/
+.release-layer {
+  width:465px;
+  margin:auto;
+  padding:10px 0;
+}
+.release-layer-name {
+  width:465px;
+  height:25px;
+  line-height:25px;
+}
+.release-layer-name span,.jobs-layer-name span {
+  color:#FC830E;
+  font-weight:bold;
+}
+.release-layer-right span,.email-count span {
+  color:#CB2121;
+  font-weight:bold;
+}
+.release-layer-left {
+  float:left;
+}
+.release-layer-right {
+  float:right;
+  padding-right:10px;
+}
+.release-layer-textarea {
+  width:450px;
+  height:120px;
+  margin-left:5px;
+}
+.release-layer-textarea textarea {
+  width:448px;
+  height:118px;
+  border:1px solid #CBCBCB;
+}
+
+/***推荐职位***/
+.jobs-layer {
+  width:502px;
+  height:30px;
+  line-height:30px;
+  margin-top:6px;
+  background-color:#fff0c6;
+  color:#555;
+  text-align:center;
+}
+.jobs-layer-main,.forwarding-layer-main {
+  width:502px;
+  padding:10px 0 5px 0;
+}
+.jobs-layer-list {
+  width:502px;
+  line-height:25px;
+  _line-height:20px;
+  padding-top:10px;
+  _padding-top:0px;
+  color:#555;
+}
+.jobs-layer-name,.move-layer-name {
+  width:112px; 
+  height:25px;
+  text-align:right;
+  float:left;
+  font-size:14px;
+}
+.jobs-layer-input {
+  width:295px;
+  height:20px;
+  margin-left:10px;
+  float:left;
+}
+.jobs-layer-input select,.move-layer-input select {
+  width:293px;
+  height:22px;
+  border:1px solid #7F9DB9;
+}
+.move-layer-input select {
+  width:260px;
+}
+.move-layer-input span {
+  color:#C81E1E;
+}
+.jobs-layer-input span {
+  color:#C81E1E;
+}
+a.move-layer-decoration {
+  color:#315aaa;
+  text-decoration:underline;
+}
+.blue-color {
+  color:#6d901d;
+}
+/***移到简历夹***/
+.move-layer-list {
+  width:406px;
+  line-height:25px;
+  padding-top:10px;
+  color:#555;
+}
+.move-layer-name {
+  width: 115px;
+}
+
+/***转发简历***/
+.name-weight {
+  font-size:12px;
+}
+.forwarding-add,.forwarding-add-top {
+    padding-top:0;
+}
+.forwarding-add-top {
+    height:18px;
+    line-height:18px;
+}
+.forwarding-add-top .jobs-layer-name {
+    height:18px;
+    line-height:18px;
+}
+.forwarding-tips-add {
+    padding:0 5px;
+    height:18px;
+    line-height:18px;
+    font-size:12px;
+    color:#555;
+    margin-top:3px;
+    background-color:#FFF6D4;
+    border:1px solid #FFCB08;
+}
+.forwarding-tips-add span {
+    color:#eb2c2c;
+}
+.forwarding-layer-input {
+  width:256px;
+  display:inline;
+}
+.forwarding-layer-input input {
+  width:323px;
+}
+.forwarding-layer-botton {
+  width:78px;
+  height:25px;
+  float:left;
+  margin-left:10px;
+  cursor:pointer;
+  background:url(http://img02.zhaopin.cn/2012/img/rd/rdTitle.png) 0 -127px no-repeat;
+}
+.forwarding-layer-select input {
+  width:320px;
+  margin-left:10px;
+  display:inline;
+  padding-left:23px;
+  background:url(http://img02.zhaopin.cn/2012/img/rd/rdTitle.png) 0 -154px no-repeat;
+  cursor:pointer;
+  overflow:hidden;
+  width:319px\9;
+}
+.forwarding-layer-textarea {
+  width:323px;
+  height:118px;
+  padding:5px;
+  border:1px solid #7F9DB9;
+  margin:0 0 5px 0;
+  color:#777;
+}
+.forwarding-list {
+  width:303px;
+  height:20px;
+  line-height:20px;
+}
+.forwarding-email-name {
+  width:288px;
+  height:20px;
+  overflow:hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  float:left;
+}
+.forwarding-email-name:hover {
+  background-color:
+}
+.forwarding-email-colse {
+  width:15px;
+  height:20px;
+  background:url(http://img02.zhaopin.cn/2012/img/rd/rdTitle.png) -65px -82px no-repeat;
+  cursor:pointer;
+  float:left;
+}
+.forwarding-layer-main {
+  width:502px;
+  border-top: 1px dashed #CBCBCB;
+  padding:5px 0 0;
+}
+.forwarding-down {
+  width:343px;
+  height:187px;
+  border:1px solid #7F9DB9;
+  background-color:#fff;
+  display:none;
+  position:absolute;
+  left: 122px;
+  top: 140px;
+  top: 142px\9;
+}
+.forwarding-down-title {
+  width:343px;
+  height:33px;
+  border-bottom: 1px dashed #CBCBCB;
+}
+.forwarding-down-input {
+  width:210px;
+  height:33px;
+  line-height:33px;
+  float:left;
+}
+.forwarding-down-input input {
+  vertical-align:-2px;
+}
+.forwarding-down-botton {
+  width:60px;
+  height:23px;
+  margin:5px 0 5px 10px;
+  background:url(http://img02.zhaopin.cn/2012/img/rd/rdTitle.png) 0 -178px no-repeat;
+  float:left;
+}
+.botton-close {
+  width:48px;
+  background:url(http://img02.zhaopin.cn/2012/img/rd/rdTitle.png) -102px -178px no-repeat;
+}
+.forwarding-down-main {
+  width:343px;
+  height:154px;
+}
+.forwarding-down-main {
+  width:323px;
+  height:124px;
+  font-size:12px;
+  overflow-y:scroll;
+  margin:10px;
+  border:0;
+}
+.forwarding-checkbox {
+  width:303px;
+  float:left;
+  height:20px;
+  line-height:20px;
+}
+.down-checkbox {
+  height:20px;
+  line-height:20px;
+}
+.forwarding-checkbox span {
+  color:#555;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow:hidden;
+  display: inline-block;
+  vertical-align: top;
+  width: 190px;
+}
+
+
+/***您可能对一下简历感兴趣***/
+.interest-layer {
+  width:534px;
+  padding:10px;
+  border-bottom: 1px dashed #CBCBCB;
+}
+.interest-layer tr {
+  height:30px;
+  color:#777;
+  text-align:center;
+}
+.interest-layer tr.first-row {
+  color:#333;
+  background-color:#edf6fb;
+}
+.row-bg-color {
+  background-color:#F4F4F4;
+}
+
+.interest-layer-td {
+  width:135px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow:hidden;
+}
+.interest-layer-tdadd {
+  width:100px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow:hidden;
+}
+.interest-layer-td a:hover {
+  text-decoration:underline;
+}
+
+/***编辑标签***/
+.editor-layer {
+  width:350px;
+  margin:auto;
+  padding:10px 10px 0;
+}
+.editor-layer-list {
+  width:350px;
+  height:25px;
+  padding-bottom:5px;
+  position:relative;
+}
+.editor-layer-input {
+  width:202px;
+  height:23px;
+  float:left;
+  border:1px solid #7F9DB9;
+}
+.editor-layer-name {
+  height:25px;
+  line-height:25px;
+  color:#315aaa;
+  float:left;
+}
+.editor-layer-icon {
+  width:25px;
+  height:25px;
+  background:url(http://img02.zhaopin.cn/2012/img/rd/spritesAll.png) no-repeat;
+  cursor:pointer;
+  float:left;
+}
+.editor-layer-coles {
+  width:15px;
+  height:25px;
+  background:url(http://img02.zhaopin.cn/2012/img/rd/rdTitle.png) -65px -79px no-repeat;
+  cursor:pointer;
+  margin:0 5px;
+  float:left;
+}
+.cvLabelColor1 {
+  background-position: 0 -43px;
+}
+.cvLabelColor2 {
+  background-position: -21px -43px;
+}
+.cvLabelColor3 {
+  background-position: 0 -68px;
+}
+.cvLabelColor4 {
+  background-position: -21px -68px;
+}
+.cvLabelColor5 {
+  background-position: 0 -93px;
+}
+.cvLabelColor6 {
+  background-position: -21px -93px;
+}
+.cvLabelColor7 {
+  background-position: 0 -118px;
+}
+.cvLabelColor8 {
+  background-position: -21px -118px;
+}
+.cvLabelColor9 {
+  background-position: 0 -143px;
+}
+.cvLabelColor10 {
+  background-position: -21px -143px;
+}
+.cvLabelColor11 {
+  background-position: 0 -169px;
+}
+.cvLabelColor12 {
+  background-position: -21px -169px;
+}
+.editor-layer-list a {
+  text-decoration:underline;
+  color:#315aaa;
+}
+.editor-layer-list-weight,.editor-layer-list-weightadd {
+  font-weight:bold;
+}
+.editor-layer-add {
+  width:154px;
+  padding:10px;
+  border:1px solid #7F9DB9;
+  display:none;
+  position:absolute;
+  background-color:#fff;
+}
+
+/***添加标签***/
+.addtags-layer-list {
+  padding:0;
+}
+.add-tags-layer-name {
+  width:325px;
+  height:25px;
+  line-height:25px;
+  color:#315aaa;
+  float:left;
+}
+.layer-icon-img1 {
+  background-position: 0 0;
+}
+.layer-icon-img2 {
+  background-position: -21px 0;
+}
+.layer-icon-img3 {
+  background-position: -22px -21px;
+}
+.editor-layer-list {
+  margin:auto;
+}
+#popupInnerCon .buttons span.popupConfirmBtnGray{
+    background: url("http://img02.zhaopin.cn/2012/img/rd/rdTitle.png") 0 -247px no-repeat;
+    color: #bbbbbb;
+}
+.email-count {
+    float:left;
+    padding-left:120px;
+    line-height:20px;
+}
+.jobs-layer-main .tip-x-validate-error {
+    padding-left:19px;
+}
+.input-x-validate-error{ background-color:#feeeee; border:1px solid #bd8b8a; -moz-box-shadow:2px 2px 2px #ffcbc8 inset; -webkit-box-shadow:2px 2px 2px #ffcbc8 inset; box-shadow:2px 2px 2px #ffcbc8 inset;}
+.autocomplete-tips-box {
+    width:252px;
+    width:253px\9;
+    _height:125px;
+    *height:125px;
+    max-height:125px;
+    border: 1px solid #7F9DB9;
+    background-color:#fff;
+    overflow-y:auto;
+}
+.autocomplete-tips-box ul {
+    width:252px;
+    list-style:none;
+    margin:0;
+    padding:0;
+}
+.autocomplete-tips-box li {
+    width:242px;
+    height:20px;
+    line-height:20px;
+    list-style:none;
+    padding:0 5px;
+    margin:5px 0;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow:hidden;
+}
+.autocomplete-tips-box li:hover {
+    background-color:#f2f2f2;
+}
+.autocomplete-tips-box .ac-hover {
+    background-color:#f2f2f2;
+}
+.email_validate {
+    _height:20px;
+    _line-height:20px;
+}
+
+/***相似简历满意度***/
+.satisfaction-layer {
+    border-bottom: 1px dashed #CBCBCB;
+    margin: 0 auto 10px;
+    position: relative;
+    width: 502px;
+}
+.satisfaction-layer-title,.satisfaction-tips {
+    width:452px;
+    height:30px;
+    line-height:30px;
+    margin:5px auto 0;
+}
+.satisfaction-textarea {
+    width:452px;
+    height:122px;
+    margin:auto;
+}
+.satisfaction-textarea textarea {
+    resize:none;
+    font-size:12px;
+}
+.satisfaction-tips {
+    margin:auto;
+    text-align:right;
+}
+/*下载简历*/
+.move-layer-list-title {padding-bottom: 30px;
+	border-bottom: 1px dashed #cbcbcb;
+	}
+.move-layer-list-content {
+	padding-left:30px;width:376px;
+	}
+.save-layer-body-border{border:none;}

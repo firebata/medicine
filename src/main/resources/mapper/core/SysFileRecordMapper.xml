@@ -1,0 +1,222 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cnfwsy.core.mapper.SysFileRecordMapper">
+
+    <sql id="searchInfoSql">
+        `id` AS id,
+        `file_name` AS  fileName,
+        `del_url` AS  delUrl,
+        `file_path` AS  filePath,
+        `new_file_name` AS  newFileName,
+        `update_time` AS  updateTime,
+        `suffix` AS  suffix,
+        `del_flag` AS  delFlag,
+        `path_type` AS  pathType,
+        `buss_id` AS  bussId,
+        `create_time` AS  createTime,
+        `file_url` AS  fileUrl,
+        `id` AS  id,
+        `operator_id` AS  operatorId,
+        `file_id` AS  fileId,
+        `status` AS  status
+    </sql>
+
+
+    <select id="queryInfo" resultType="com.cnfwsy.core.bean.SysFileRecord">
+        select
+        <include refid="searchInfoSql"/>
+        FROM    t_sys_file_record a
+        WHERE
+            `file_id` = #{fileId}
+        limit 1
+    </select>
+
+    <select id="listInfosCounts" resultType="Integer">
+        SELECT COUNT(*)
+        FROM  t_sys_file_record a
+        where `del_flag`=0
+    </select>
+
+    <select id="listFilteredInfosCounts" resultType="Integer">
+        SELECT COUNT(*)
+        FROM  t_sys_file_record
+        where `del_flag`=0
+         <if test="fileName !=null and fileName != ''">
+            and  `file_name`  =#{fileName}
+         </if>
+         <if test="delUrl !=null and delUrl != ''">
+            and  `del_url`  =#{delUrl}
+         </if>
+         <if test="filePath !=null and filePath != ''">
+            and  `file_path`  =#{filePath}
+         </if>
+         <if test="newFileName !=null and newFileName != ''">
+            and  `new_file_name`  =#{newFileName}
+         </if>
+         <if test="updateTime !=null and updateTime != ''">
+            and  `update_time`  =#{updateTime}
+         </if>
+         <if test="suffix !=null and suffix != ''">
+            and  `suffix`  =#{suffix}
+         </if>
+         <if test="delFlag !=null and delFlag != ''">
+            and  `del_flag`  =#{delFlag}
+         </if>
+         <if test="pathType !=null and pathType != ''">
+            and  `path_type`  =#{pathType}
+         </if>
+         <if test="bussId !=null and bussId != ''">
+            and  `buss_id`  =#{bussId}
+         </if>
+         <if test="createTime !=null and createTime != ''">
+            and  `create_time`  =#{createTime}
+         </if>
+         <if test="fileUrl !=null and fileUrl != ''">
+            and  `file_url`  =#{fileUrl}
+         </if>
+         <if test="id !=null and id != ''">
+            and  `id`  =#{id}
+         </if>
+         <if test="operatorId !=null and operatorId != ''">
+            and  `operator_id`  =#{operatorId}
+         </if>
+         <if test="fileId !=null and fileId != ''">
+            and  `file_id`  =#{fileId}
+         </if>
+         <if test="status !=null and status != ''">
+            and  `status`  =#{status}
+         </if>
+    </select>
+
+    <select id="searchInfos" resultType="com.cnfwsy.core.bean.SysFileRecord">
+        SELECT
+        <include refid="searchInfoSql"/>
+        FROM  t_sys_file_record a
+        WHERE del_flag=0
+        <if test="fileName !=null and fileName != ''">
+            and  `file_name`  =#{fileName}
+        </if>
+        <if test="delUrl !=null and delUrl != ''">
+            and  `del_url`  =#{delUrl}
+        </if>
+        <if test="filePath !=null and filePath != ''">
+            and  `file_path`  =#{filePath}
+        </if>
+        <if test="newFileName !=null and newFileName != ''">
+            and  `new_file_name`  =#{newFileName}
+        </if>
+        <if test="updateTime !=null and updateTime != ''">
+            and  `update_time`  =#{updateTime}
+        </if>
+        <if test="suffix !=null and suffix != ''">
+            and  `suffix`  =#{suffix}
+        </if>
+        <if test="delFlag !=null and delFlag != ''">
+            and  `del_flag`  =#{delFlag}
+        </if>
+        <if test="pathType !=null and pathType != ''">
+            and  `path_type`  =#{pathType}
+        </if>
+        <if test="bussId !=null and bussId != ''">
+            and  `buss_id`  =#{bussId}
+        </if>
+        <if test="createTime !=null and createTime != ''">
+            and  `create_time`  =#{createTime}
+        </if>
+        <if test="fileUrl !=null and fileUrl != ''">
+            and  `file_url`  =#{fileUrl}
+        </if>
+        <if test="id !=null and id != ''">
+            and  `id`  =#{id}
+        </if>
+        <if test="operatorId !=null and operatorId != ''">
+            and  `operator_id`  =#{operatorId}
+        </if>
+        <if test="fileId !=null and fileId != ''">
+            and  `file_id`  =#{fileId}
+        </if>
+        <if test="status !=null and status != ''">
+            and  `status`  =#{status}
+        </if>
+        limit #{start},#{pageSize}
+    </select>
+
+    <update id="updateInfo">
+        update
+            t_sys_file_record  a
+        <set>
+            <if test="fileName !=null and fileName != ''">
+                `file_name`  = #{fileName},
+            </if>
+            <if test="delUrl !=null and delUrl != ''">
+                `del_url`  = #{delUrl},
+            </if>
+            <if test="filePath !=null and filePath != ''">
+                `file_path`  = #{filePath},
+            </if>
+            <if test="newFileName !=null and newFileName != ''">
+                `new_file_name`  = #{newFileName},
+            </if>
+            <if test="fileUrl !=null and fileUrl != ''">
+                `file_url`  = #{fileUrl},
+            </if>
+            <if test="suffix !=null and suffix != ''">
+                `suffix`  = #{suffix},
+            </if>
+            <if test="pathType !=null and pathType != ''">
+                `path_type`  = #{pathType},
+            </if>
+            <if test="operatorId !=null and operatorId != ''">
+                `operator_id`  = #{operatorId},
+            </if>
+            <if test="fileId !=null and fileId != ''">
+                `file_id`  = #{fileId},
+            </if>
+            <if test="bussId !=null and bussId != ''">
+                `buss_id`  = #{bussId},
+            </if>
+            <if test="status !=null and status != ''">
+                `status`  = #{status},
+            </if>
+        </set>
+        WHERE
+            `file_id` = #{fileId}
+    </update>
+
+    <update id="del">
+        update  t_sys_file_record a
+        set  `del_flag`=1
+        where
+            `file_id` = #{fileId}
+    </update>
+
+
+    <insert id="add">
+        insert into
+        t_sys_file_record(`file_name`,`del_url`,`file_path`,`new_file_name`,`file_url`,`suffix`,`path_type`,`operator_id`,`file_id`,`buss_id`,`status`)
+        values (#{fileName},#{delUrl},#{filePath},#{newFileName},#{fileUrl},#{suffix},#{pathType},#{operatorId},#{fileId},#{bussId},#{status})
+    </insert>
+
+    <update id="updateStatus">
+    	update t_sys_file_record
+    	set
+    	  `status` =#{status},
+    	  `buss_id`=#{bussId}
+    	where `file_id`= #{fileId}
+    </update>
+
+
+    <update id="batchUpdate"  parameterType="java.util.List">
+        <foreach collection="list" item="item" index="index" open="" close="" separator=";">
+            update t_sys_file_record
+            <set>
+                `status` =#{item.status},
+                `buss_id`=#{item.bussId}
+            </set>
+            where `file_id`= #{item.fileId}
+        </foreach>
+    </update>
+
+</mapper>

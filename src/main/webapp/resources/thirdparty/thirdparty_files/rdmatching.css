@@ -1,0 +1,186 @@
+/*简历匹配度弹出框Begin*/
+p {margin:0;padding:0;}
+img {border:0;}
+.matching {
+	position:relative;
+	border:1px solid #7191a7;
+	width:550px;
+	background:#fff;
+	-webkit-box-shadow:2px 2px 7px #999;
+	padding:0 8px 10px;
+	display:none;
+	}
+.matching .close {
+	display:block;
+	width:18px;
+	height:18px;
+	position:absolute;
+	top:8px;
+	right:8px;
+	background:url(http://img02.zhaopin.cn/2012/img/rd/close-bg.gif) no-repeat;
+	} 
+.matching .top-sharp {
+	position:absolute;
+	top:-14px;
+	left:26px;
+	}
+.matching .matching-name {
+	font-size:12px;
+	font-weight:normal;
+	line-height:34px;
+	position:relative;
+	width:512px;
+	height:40px;
+	}
+.matching .strong-name {
+	font-size:14px;
+	font-weight:bold;
+	position:absolute;
+	top:6px;
+	left:6px;
+	width:62px;
+	white-space: nowrap;
+	overflow:hidden;
+	text-overflow:ellipsis;
+	}
+.matching .padding16 {padding-left:10px;}
+.matching .padR16 {padding-right:10px;}
+.matching .wid74 {width:74px;}
+.matching .wid82 {width:82px;}
+.matching .wid224 {width:224px;}
+.matching .wid134 {width:124px;}
+.matching .ellipsis {
+	white-space:nowrap;
+	overflow:hidden;
+	text-overflow:ellipsis;
+	}
+.matching .matching-degree {
+	position:absolute;
+	top:6px;
+	left:86px;
+	color:#333px;
+	}
+.matching .introduce {color:#999;}
+.matching .matching-mark {
+	position:absolute;
+	top:17px;
+	left:131px;
+	background:url(http://img02.zhaopin.cn/2012/img/rd/matching.gif) no-repeat;
+	width:75px;
+	height:12px;
+	overflow:hidden;
+	}
+.matching .mark5 {background-position:0 0;}
+.matching .mark4 {background-position:0 -12px;}
+.matching .mark3 {background-position:0 -24px;}
+.matching .mark2 {background-position:0 -36px;}
+.matching .mark1{background-position:0 -48px;}
+.matching .mark0 {background-position:0 -60px;}
+.matching .matching-explain {
+	background:url(http://img02.zhaopin.cn/2012/img/rd/warn.png) no-repeat;
+	position:absolute;
+	top:8px;
+	left:209px;
+	padding-left:30px;
+	width:259px;
+	line-height:25px;
+	color:#990000;
+	}
+.matching .matching-explain a {
+	font-weight:bold;
+	text-decoration:none;
+	color:#990000;
+	}.matching .matching-explain a:hover {
+	text-decoration:none;
+	color:#990000;
+	}
+.matching .tableBig {
+	border-collapse:collapse;
+	border:1px solid #a2cde4;
+	line-height:24px;
+	font-size:12px;
+	width:100%;
+	background:#fff;
+	width:550px;
+	color:#333333;
+	}
+.matching .tableBig td,.matching .tableBig th{
+	border:1px solid #a2cde4;
+	}
+.matching .tableSmall {
+	height:18px;
+	}
+.matching .tableSmall td{
+	border:none;
+	}
+.matching table th {
+	background:#ebf7fc;
+	width:82px;
+	font-weight:normal;
+	}
+.matching table thead td {
+	background:#b9daeb;
+	font-weight:bold;
+	}
+.matching .star0,.matching .star1,.matching .star2,.matching .star3,.matching .star4,.matching .star5,.matching .star6{
+	background:url(http://img02.zhaopin.cn/2012/img/rd/matching-mark.png) no-repeat;
+	width:53px;
+	height:8px;
+	display:block;
+	overflow:hidden;
+	}	
+.matching .star5 {background-position:0 0;}
+.matching .star4 {background-position:0 -9px;}
+.matching .star3 {background-position:0 -18px;}
+.matching .star2 {background-position:0 -27px;}
+.matching .star1 {background-position:0 -36px;}
+.matching .star0 {background-position:0 -45px;}
+.matching .gap {margin:0 3px 0 6px;}
+.matching .others-gender,.matching .others-photo,.matching .others-deliver {
+	display:block;
+	line-height:18px;
+	background:url(http://img02.zhaopin.cn/2012/img/rd/others.png) no-repeat;
+	}
+.matching .others-gender {
+	width:29px;
+	padding-left:32px;
+	background-position:12px -17px;
+	}
+.matching .others-genderWomen {
+	background-position:12px 3px;
+	}
+.matching .others-photo {
+	width:41px;
+	padding-left:24px;
+	background-position:6px -35px;
+	}
+.matching .others-photoBe{
+	background-position:6px -55px;
+	}
+.matching .others-deliver {
+	line-height:18px;
+	display:block;
+	width:70px;
+	display:block;
+	padding-left:5px;
+	background:url(http://img02.zhaopin.cn/2012/img/rd/others.png) no-repeat 57px -84px;
+	color:#333;
+	}
+.matching .others-deliver:hover {
+	color:#333;
+	text-decoration:none;
+	}
+.matching .warn, .matching .warn th {background:#ffe0e0;}
+.matching .edit {
+	width:25px;
+	padding-left:13px;
+	position:absolute;
+	top:48px;
+	left:514px;
+	line-height:14px;
+	background:url(http://img02.zhaopin.cn/2012/img/rd/edit.png) no-repeat;
+	font-size:12px;
+	color:#336699;
+	display:none;
+	}
+/*简历匹配度弹出框End*/

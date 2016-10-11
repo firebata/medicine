@@ -1,0 +1,580 @@
+<%@ page language="java" contentType="text/html; charset=utf-8" %>
+<dl>
+    <dt>A</dt>
+    <dd>
+        <span>鞍山</span>
+        <span>安顺</span>
+        <span>安阳</span>
+        <span>安康</span>
+        <span>安庆</span>
+        <span>阿坝</span>
+        <span>阿克苏</span>
+        <span>阿拉尔</span>
+        <span>阿拉善盟</span>
+        <span>阿勒泰</span>
+        <span>阿里</span>
+        <span>安达</span>
+    </dd>
+</dl>
+<dl>
+    <dt>B</dt>
+    <dd>
+        <span>北京</span>
+        <span>包头</span>
+        <span>宝鸡</span>
+        <span>保定</span>
+        <span>滨州</span>
+        <span>亳州</span>
+        <span>蚌埠</span>
+        <span>北海</span>
+        <span>巴彦淖尔</span>
+        <span>巴音郭楞</span>
+        <span>巴中</span>
+        <span>白城</span>
+        <span>白沙</span>
+        <span>白山</span>
+        <span>白银</span>
+        <span>百色</span>
+        <span>保山</span>
+        <span>保亭</span>
+        <span>本溪</span>
+        <span>毕节</span>
+
+    </dd>
+</dl>
+<dl>
+    <dt>C</dt>
+    <dd><span>重庆</span>
+        <span>成都</span>
+        <span>长春</span>
+        <span>长株潭</span>
+        <span>沧州</span>
+        <span>常熟</span>
+        <span>常德</span>
+        <span>常州</span>
+        <span>滁州</span>
+        <span>承德</span>
+        <span>郴州</span>
+        <span>潮州</span>
+        <span>长治</span>
+        <span>赤峰</span>
+        <span>池州</span>
+        <span>昌都</span>
+        <span>昌吉</span>
+        <span>昌江</span>
+        <span>昌图</span>
+        <span>长葛</span>
+        <span>长沙</span>
+        <span>巢湖</span>
+        <span>朝阳</span>
+        <span>城阳</span>
+        <span>澄迈</span>
+        <span>崇左</span>
+        <span>楚雄</span>
+        <span>慈溪</span>
+
+    </dd>
+</dl>
+<dl>
+    <dt>D</dt>
+    <dd><span>大连</span>
+        <span>东莞</span>
+        <span>大庆</span>
+        <span>丹东</span>
+        <span>德阳</span>
+        <span>德州</span>
+        <span>东营</span>
+        <span>大同</span>
+        <span>达州</span>
+        <span>大理</span>
+        <span>大兴安岭</span>
+        <span>丹阳</span>
+        <span>儋州</span>
+        <span>德宏</span>
+        <span>德清</span>
+        <span>迪庆</span>
+        <span>定安</span>
+        <span>定西</span>
+
+    </dd>
+</dl>
+<dl>
+    <dt>E</dt>
+    <dd><span>鄂尔多斯</span>
+        <span>鄂州</span>
+        <span>恩施</span>
+        <span>峨眉</span>
+    </dd>
+</dl>
+<dl>
+    <dt>F</dt>
+    <dd>
+        <span>佛山</span>
+        <span>福州</span>
+        <span>抚顺</span>
+        <span>阜阳</span>
+        <span>抚州</span>
+        <span>方家山</span>
+        <span>防城港</span>
+        <span>肥城</span>
+        <span>凤阳</span>
+        <span>福安</span>
+        <span>阜新</span>
+
+    </dd>
+</dl>
+<dl>
+    <dt>G</dt>
+    <dd><span>广州</span>
+        <span>赣州</span>
+        <span>贵阳</span>
+        <span>甘肃</span>
+        <span>桂林</span>
+        <span>甘南</span>
+        <span>甘孜</span>
+        <span>高邮</span>
+        <span>公安</span>
+        <span>公主岭</span>
+        <span>固安</span>
+        <span>固原</span>
+        <span>广安</span>
+        <span>广德</span>
+        <span>广元</span>
+        <span>贵港</span>
+
+    </dd>
+</dl>
+<dl>
+    <dt>H</dt>
+    <dd><span>哈尔滨</span>
+        <span>海口</span>
+        <span>邯郸</span>
+        <span>杭州</span>
+        <span>合肥</span>
+        <span>衡阳</span>
+        <span>衡水</span>
+        <span>呼和浩特</span>
+        <span>湖州</span>
+        <span>淮安</span>
+        <span>菏泽</span>
+        <span>淮北</span>
+        <span>汉中</span>
+        <span>呼伦贝尔</span>
+        <span>葫芦岛</span>
+        <span>惠州</span>
+        <span>珲春</span>
+        <span>鹤壁</span>
+        <span>淮南</span>
+        <span>黄冈</span>
+        <span>黄石</span>
+        <span>哈密</span>
+        <span>海北</span>
+        <span>海城</span>
+        <span>海东</span>
+        <span>海南州</span>
+        <span>海宁</span>
+        <span>海西</span>
+        <span>海阳</span>
+        <span>和顺</span>
+        <span>和田</span>
+        <span>河池</span>
+        <span>河源</span>
+        <span>贺州</span>
+        <span>鹤壁</span>
+        <span>鹤岗</span>
+        <span>鹤山</span>
+        <span>黑河</span>
+        <span>红河</span>
+        <span>怀化</span>
+        <span>黄岛</span>
+        <span>黄南</span>
+        <span>黄山</span>
+        <span>韩国</span>
+        <span></span>
+        <span>荷兰</span>
+
+    </dd>
+</dl>
+<dl>
+    <dt>J</dt>
+    <dd><span>济南</span>
+        <span>吉林市</span>
+        <span>济宁</span>
+        <span>嘉兴</span>
+        <span>江门</span>
+        <span>江阴</span>
+        <span>金华</span>
+        <span>荆州</span>
+        <span>九江</span>
+        <span>焦作</span>
+        <span>揭阳</span>
+        <span>佳木斯</span>
+        <span>锦州</span>
+        <span>晋中</span>
+        <span>晋城</span>
+        <span>吉安</span>
+        <span>景德镇</span>
+        <span>鸡西</span>
+        <span>即墨</span>
+        <span>济源</span>
+        <span>嘉善</span>
+        <span>嘉峪关</span>
+        <span>简阳</span>
+        <span>胶南</span>
+        <span>胶州</span>
+        <span>金昌</span>
+        <span>金湖</span>
+        <span>晋江</span>
+        <span>荆门</span>
+        <span>靖江</span>
+        <span>酒泉</span>
+        <span>句容</span>
+    </dd>
+</dl>
+<dl>
+    <dt>K</dt>
+    <dd>
+        <span>开封</span>
+        <span>昆明</span>
+        <span>昆山</span>
+        <span>开平</span>
+        <span>喀什</span>
+        <span>开原</span>
+        <span>克拉玛依</span>
+        <span>克孜勒苏</span>
+        <span>奎屯市</span>
+        <span>科威特</span>
+    </dd>
+</dl>
+<dl>
+    <dt>L</dt>
+    <dd>
+        <span>兰州</span>
+        <span>廊坊</span>
+        <span>连云港</span>
+        <span>聊城</span>
+        <span>临沂</span>
+        <span>柳州</span>
+        <span>洛阳</span>
+        <span>漯河</span>
+        <span>拉萨</span>
+        <span>六盘水</span>
+        <span>莱芜</span>
+        <span>乐山</span>
+        <span>辽阳</span>
+        <span>临汾</span>
+        <span>龙岩</span>
+        <span>丽水</span>
+        <span>六安</span>
+        <span>来宾</span>
+        <span>莱西</span>
+        <span>乐东</span>
+        <span>乐清</span>
+        <span>丽江</span>
+        <span>溧阳</span>
+        <span>凉山</span>
+        <span>辽源</span>
+        <span>林芝</span>
+        <span>临沧</span>
+        <span>临高</span>
+        <span>临夏</span>
+        <span>陵水</span>
+        <span>龙川</span>
+        <span>龙泉</span>
+        <span>陇南</span>
+        <span>娄底</span>
+        <span>泸州</span>
+        <span>吕梁</span>
+
+    </dd>
+</dl>
+<dl>
+    <dt>M</dt>
+    <dd><span>马鞍山</span>
+        <span>绵阳</span>
+        <span>牡丹江</span>
+        <span>梅州</span>
+        <span>茂名</span>
+        <span>满洲里</span>
+        <span>眉山</span>
+
+    </dd>
+</dl>
+<dl>
+    <dt>N</dt>
+    <dd><span>南京</span>
+        <span>南昌</span>
+        <span>南充</span>
+        <span>南宁</span>
+        <span>南阳</span>
+        <span>南通</span>
+        <span>宁波</span>
+        <span>宁夏</span>
+        <span>南平</span>
+        <span>宁德</span>
+        <span>内江</span>
+        <span>那曲</span>
+        <span>南沙开发区</span>
+        <span>宁海</span>
+        <span>怒江</span>
+
+    </dd>
+</dl>
+<dl>
+    <dt>P</dt>
+    <dd>
+        <span>平顶山</span>
+        <span>莆田</span>
+        <span>濮阳</span>
+        <span>盘锦</span>
+        <span>普宁</span>
+        <span>攀枝花</span>
+        <span>平度</span>
+        <span>平湖</span>
+        <span>平凉</span>
+        <span>萍乡</span>
+        <span>普洱</span>
+
+    </dd>
+</dl>
+<dl>
+    <dt>Q</dt>
+    <dd>
+        <span>青岛</span>
+        <span>秦皇岛</span>
+        <span>青海</span>
+        <span>清远</span>
+        <span>泉州</span>
+        <span>齐齐哈尔</span>
+        <span>曲靖</span>
+        <span>七台河</span>
+        <span>启东</span>
+        <span>潜江</span>
+        <span>黔东南</span>
+        <span>黔南</span>
+        <span>黔西南</span>
+        <span>钦州</span>
+        <span>庆阳</span>
+        <span>琼海</span>
+        <span>琼中</span>
+        <span>衢州</span>
+        <span>泉港区</span>
+
+    </dd>
+</dl>
+<dl>
+    <dt>R</dt>
+    <dd><span>日照</span>
+        <span>日喀则</span>
+        <span>荣成</span>
+        <span>如皋</span>
+        <span>乳山</span>
+        <span>瑞安</span>
+    </dd>
+</dl>
+<dl>
+    <dt>S</dt>
+    <dd><span>上海</span>
+        <span>深圳</span>
+        <span>沈阳</span>
+        <span>石家庄</span>
+        <span>三亚</span>
+        <span>汕头</span>
+        <span>商丘</span>
+        <span>绍兴</span>
+        <span>四平</span>
+        <span>苏州</span>
+        <span>宿迁</span>
+        <span>宿州</span>
+        <span>随州</span>
+        <span>上饶</span>
+        <span>邵阳</span>
+        <span>十堰</span>
+        <span>三门峡</span>
+        <span>商洛</span>
+        <span>松原</span>
+        <span>遂宁</span>
+        <span>韶关</span>
+        <span>三明</span>
+        <span>三河</span>
+        <span>三门</span>
+        <span>山南</span>
+        <span>汕尾</span>
+        <span>上虞</span>
+        <span>尚志</span>
+        <span>神农架</span>
+        <span>石河子</span>
+        <span>石嘴山</span>
+        <span>双城</span>
+        <span>双鸭山</span>
+        <span>朔州</span>
+        <span>思茅</span>
+        <span>宿松</span>
+        <span>绥芬河</span>
+        <span>绥化</span>
+
+    </dd>
+</dl>
+<dl>
+    <dt>T</dt>
+    <dd><span>天津</span>
+        <span>台州</span>
+        <span>太原</span>
+        <span>泰安</span>
+        <span>泰州</span>
+        <span>唐山</span>
+        <span>铁岭</span>
+        <span>铜川</span>
+        <span>通辽</span>
+        <span>通化</span>
+        <span>铜陵</span>
+        <span>塔城</span>
+        <span>台山</span>
+        <span>太仓市</span>
+        <span>泰兴</span>
+        <span>天门</span>
+        <span>天水</span>
+        <span>通州</span>
+        <span>桐乡</span>
+        <span>铜仁</span>
+        <span>图木舒克</span>
+        <span>吐鲁番</span>
+        <span>屯昌</span>
+
+    </dd>
+</dl>
+<dl>
+    <dt>W</dt>
+    <dd>
+        <span>武汉</span>
+        <span>威海</span>
+        <span>潍坊</span>
+        <span>温州</span>
+        <span>乌鲁木齐</span>
+        <span>无锡</span>
+        <span>芜湖</span>
+        <span>渭南</span>
+        <span>万宁</span>
+        <span>温岭</span>
+        <span>文昌</span>
+        <span>文山</span>
+        <span>乌海</span>
+        <span>乌兰察布</span>
+        <span>乌审旗</span>
+        <span>乌苏</span>
+        <span>吴忠</span>
+        <span>梧州</span>
+        <span>五家渠</span>
+        <span>五指山</span>
+        <span>武威</span>
+        <span>武穴</span>
+
+    </dd>
+</dl>
+<dl>
+    <dt>X</dt>
+    <dd><span>西安</span>
+        <span>西藏</span>
+        <span>厦门</span>
+        <span>咸阳</span>
+        <span>襄阳</span>
+        <span>新乡</span>
+        <span>徐州</span>
+        <span>许昌</span>
+        <span>信阳</span>
+        <span>邢台</span>
+        <span>新疆</span>
+        <span>新余</span>
+        <span>孝感</span>
+        <span>西昌</span>
+        <span>西宁</span>
+        <span>西平</span>
+        <span>西双版纳</span>
+        <span>锡林郭勒盟</span>
+        <span>仙桃</span>
+        <span>咸宁</span>
+        <span>香河</span>
+        <span>湘潭</span>
+        <span>湘西</span>
+        <span>象山</span>
+        <span>忻州</span>
+        <span>兴安盟</span>
+        <span>兴城</span>
+        <span>兴平</span>
+        <span>盱眙</span>
+        <span>宣城</span>
+
+    </dd>
+</dl>
+<dl>
+    <dt>Y</dt>
+    <dd><span>烟台</span>
+        <span>盐城</span>
+        <span>扬州</span>
+        <span>宜昌</span>
+        <span>义乌</span>
+        <span>营口</span>
+        <span>榆林</span>
+        <span>玉林</span>
+        <span>运城</span>
+        <span>宜兴</span>
+        <span>岳阳</span>
+        <span>宜宾</span>
+        <span>延安</span>
+        <span>延边</span>
+        <span>玉溪</span>
+        <span>阳江</span>
+        <span>益阳</span>
+        <span>宜春</span>
+        <span>银川</span>
+        <span>阳泉</span>
+        <span>永州</span>
+        <span>雅安</span>
+        <span>兖州</span>
+        <span>燕郊开发区</span>
+        <span>扬中</span>
+        <span>杨凌</span>
+        <span>洋浦市/洋浦经济开发区</span>
+        <span>伊春</span>
+        <span>伊犁</span>
+        <span>宜城</span>
+        <span>鹰潭</span>
+        <span>永济市</span>
+        <span>永嘉</span>
+        <span>永康</span>
+        <span>余姚</span>
+        <span>玉环县</span>
+        <span>玉树</span>
+        <span>云浮</span>
+    </dd>
+</dl>
+<dl>
+    <dt>Z</dt>
+    <dd>
+        <span>郑州</span>
+        <span>枣庄</span>
+        <span>湛江</span>
+        <span>张家港</span>
+        <span>张家口</span>
+        <span>漳州</span>
+        <span>肇庆</span>
+        <span>镇江</span>
+        <span>中山</span>
+        <span>珠海</span>
+        <span>淄博</span>
+        <span>遵义</span>
+        <span>驻马店</span>
+        <span>周口</span>
+        <span>自贡</span>
+        <span>张家界</span>
+        <span>张掖</span>
+        <span>昭通</span>
+        <span>肇东市</span>
+        <span>中卫</span>
+        <span>舟山</span>
+        <span>株洲</span>
+        <span>诸暨</span>
+        <span>资阳</span>
+        <span>遵化</span>
+    </dd>
+</dl>

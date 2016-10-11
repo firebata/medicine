@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cnfwsy.interfaces.mapper.sys.SysDictionaryMapper">
+
+    <sql id="searchInfoSql">
+        `id` AS id,
+        `value_name` AS  valueName,
+        `key_name` AS  keyName,
+        `remark` AS  remark,
+        `id` AS  id,
+        `type` AS  type
+    </sql>
+
+
+    <select id="queryInfo" resultType="com.cnfwsy.interfaces.bean.sys.SysDictionary">
+        select
+        <include refid="searchInfoSql"/>
+        FROM    t_sys_dictionary a
+        WHERE
+            `id` = #{id}
+        limit 1
+    </select>
+
+    <select id="listInfosCounts" resultType="Integer">
+        SELECT COUNT(*)
+        FROM  t_sys_dictionary a
+        where `del_flag`=0
+    </select>
+
+    <select id="listFilteredInfosCounts" resultType="Integer">
+        SELECT COUNT(*)
+        FROM  t_sys_dictionary
+        where `del_flag`=0
+         <if test="valueName !=null and valueName != ''">
+            and  `value_name`  =#{valueName}
+         </if>
+         <if test="keyName !=null and keyName != ''">
+            and  `key_name`  =#{keyName}
+         </if>
+         <if test="remark !=null and remark != ''">
+            and  `remark`  =#{remark}
+         </if>
+         <if test="id !=null and id != ''">
+            and  `id`  =#{id}
+         </if>
+         <if test="type !=null and type != ''">
+            and  `type`  =#{type}
+         </if>
+    </select>
+
+    <select id="searchInfos" resultType="com.cnfwsy.interfaces.bean.sys.SysDictionary">
+        SELECT
+        <include refid="searchInfoSql"/>
+        FROM  t_sys_dictionary a
+        WHERE del_flag=0
+        <if test="valueName !=null and valueName != ''">
+            and  `value_name`  =#{valueName}
+        </if>
+        <if test="keyName !=null and keyName != ''">
+            and  `key_name`  =#{keyName}
+        </if>
+        <if test="remark !=null and remark != ''">
+            and  `remark`  =#{remark}
+        </if>
+        <if test="id !=null and id != ''">
+            and  `id`  =#{id}
+        </if>
+        <if test="type !=null and type != ''">
+            and  `type`  =#{type}
+        </if>
+        limit #{start},#{pageSize}
+    </select>
+
+    <update id="updateInfo">
+        update
+            t_sys_dictionary  a
+        <set>
+            <if test="valueName !=null and valueName != ''">
+                `value_name`  = #{valueName},
+            </if>
+            <if test="keyName !=null and keyName != ''">
+                `key_name`  = #{keyName},
+            </if>
+            <if test="remark !=null and remark != ''">
+                `remark`  = #{remark},
+            </if>
+            <if test="type !=null and type != ''">
+                `type`  = #{type},
+            </if>
+        </set>
+        WHERE
+            `id` = #{id}
+    </update>
+
+    <update id="del">
+        update  t_sys_dictionary a
+        set  `del_flag`=1
+        where
+            `id` = #{id}
+    </update>
+
+
+    <insert id="add">
+        insert into
+        t_sys_dictionary(`value_name`,`key_name`,`remark`,`type`)
+        values (#{valueName},#{keyName},#{remark},#{type})
+    </insert>
+
+
+</mapper>

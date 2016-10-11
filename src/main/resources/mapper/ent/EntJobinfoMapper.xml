@@ -1,0 +1,707 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cnfwsy.interfaces.mapper.ent.EntJobinfoMapper">
+
+    <sql id="searchInfoSql">
+        id AS id,
+        third_kind AS  thirdKind,
+        salary_end AS  salaryEnd,
+        end_date AS  endDate,
+        job_type_name AS  jobTypeName,
+        company_name AS  companyName,
+        publish_date AS  publishDate,
+        city_id AS  cityId,
+        del_flag AS  delFlag,
+        pro_requr_id AS  proRequrId,
+        title_requr AS  titleRequr,
+        age_requr_id AS  ageRequrId,
+        job_welfare AS  jobWelfare,
+        job_nature_name AS  jobNatureName,
+        experience_id AS  experienceId,
+        com_url AS  comUrl,
+        job_type_sub_name AS  jobTypeSubName,
+        job_nature_id AS  jobNatureId,
+        education_id AS  educationId,
+        city_name AS  cityName,
+        area_name AS  areaName,
+        education_name AS  educationName,
+        experience_name AS  experienceName,
+        job_url AS  jobUrl,
+        id AS  id,
+        job_type_id AS  jobTypeId,
+        monthly_pay_id AS  monthlyPayId,
+        job_name AS  jobName,
+        address AS  address,
+        quantity AS  quantity,
+        third_id AS  thirdId,
+        pro_requr AS  proRequr,
+        update_time AS  updateTime,
+        province_id AS  provinceId,
+        job_desc AS  jobDesc,
+        title_requr_id AS  titleRequrId,
+        job_id AS  jobId,
+        salary_start AS  salaryStart,
+        company_id AS  companyId,
+        area_id AS  areaId,
+        create_time AS  createTime,
+        job_type_sub_id AS  jobTypeSubId,
+        step AS  step,
+        province_name AS  provinceName,
+        payroll AS  payroll,
+        age_requr AS  ageRequr,
+        status AS  status,
+        job_mail AS  jobMail,
+        hr_mail AS  hrMail,
+        online AS online
+    </sql>
+    <sql id="listSql">
+        a.id AS id,
+        a.third_kind AS  thirdKind,
+        a.salary_end AS  salaryEnd,
+        a.end_date AS  endDate,
+        a.job_type_name AS  jobTypeName,
+        a.company_name AS  companyName,
+        a.publish_date AS  publishDate,
+        a.city_id AS  cityId,
+        a.del_flag AS  delFlag,
+        a.pro_requr_id AS  proRequrId,
+        a.title_requr AS  titleRequr,
+        a.age_requr_id AS  ageRequrId,
+        a.job_welfare AS  jobWelfare,
+        a.job_nature_name AS  jobNatureName,
+        a.experience_id AS  experienceId,
+        a.com_url AS  comUrl,
+        a.job_type_sub_name AS  jobTypeSubName,
+        a.job_nature_id AS  jobNatureId,
+        a.education_id AS  educationId,
+        a.city_name AS  cityName,
+        a.area_name AS  areaName,
+        a.education_name AS  educationName,
+        a.experience_name AS  experienceName,
+        a.job_url AS  jobUrl,
+        a.id AS  id,
+        a.job_type_id AS  jobTypeId,
+        a.monthly_pay_id AS  monthlyPayId,
+        a.job_name AS  jobName,
+        a.address AS  address,
+        a.quantity AS  quantity,
+        a.third_id AS  thirdId,
+        a.pro_requr AS  proRequr,
+        a.update_time AS  updateTime,
+        a.province_id AS  provinceId,
+        '' AS  jobDesc,
+        a.title_requr_id AS  titleRequrId,
+        a.job_id AS  jobId,
+        a.salary_start AS  salaryStart,
+        a.company_id AS  companyId,
+        a.area_id AS  areaId,
+        a.create_time AS  createTime,
+        a.job_type_sub_id AS  jobTypeSubId,
+        a.step AS  step,
+        a.province_name AS  provinceName,
+        a.payroll AS  payroll,
+        a.age_requr AS  ageRequr,
+        a.status AS  status,
+        a.job_mail AS  jobMail,
+        a.hr_mail AS  hrMail,
+        a.online AS online
+    </sql>
+
+    <resultMap id="EntJobList" type="com.cnfwsy.interfaces.bean.ent.EntJobinfo">
+        <id property="id" column="id"></id>
+        <result property="jobId" column="jobId"></result>
+        <result property="jobName" column="jobName"></result>
+        <result property="companyId" column="companyId"></result>
+        <result property="companyName" column="companyName"></result>
+        <result property="cityId" column="cityId"></result>
+        <result property="cityName" column="cityName"></result>
+        <result property="areaId" column="areaId"></result>
+        <result property="areaName" column="areaName"></result>
+        <result property="publishDate" column="publishDate"></result>
+        <result property="endDate" column="endDate"></result>
+        <result property="jobNatureId" column="jobNatureId"></result>
+        <result property="jobNatureName" column="jobNatureName"></result>
+        <result property="jobTypeId" column="jobTypeId"></result>
+        <result property="jobTypeName" column="jobTypeName"></result>
+        <result property="jobTypeSubId" column="jobTypeSubId"></result>
+        <result property="jobTypeSubName" column="jobTypeSubName"></result>
+        <result property="delFlag" column="delFlag"></result>
+        <result property="createTime" column="createTime"></result>
+        <result property="updateTime" column="updateTime"></result>
+        <result property="quantity" column="quantity"></result>
+        <result property="educationId" column="educationId"></result>
+        <result property="educationName" column="educationName"></result>
+        <result property="experienceId" column="experienceId"></result>
+        <result property="experienceName" column="experienceName"></result>
+        <result property="monthlyPayId" column="monthlyPayId"></result>
+        <result property="salaryStart" column="salaryStart"></result>
+        <result property="salaryEnd" column="salaryEnd"></result>
+        <result property="jobDesc" column="jobDesc"></result>
+        <result property="jobWelfare" column="jobWelfare"></result>
+        <result property="jobUrl" column="jobUrl"></result>
+        <result property="comUrl" column="comUrl"></result>
+        <result property="payroll" column="payroll"></result>
+        <result property="thirdId" column="thirdId"></result>
+        <result property="thirdKind" column="thirdKind"></result>
+        <result property="status" column="status"></result>
+        <result property="step" column="step"></result>
+        <result property="address" column="address"></result>
+        <result property="jobMail" column="jobMail"></result>
+        <result property="hrMail" column="hrMail"></result>
+        <result property="online" column="online"></result>
+        <association property="entCompany" javaType="com.cnfwsy.interfaces.bean.ent.EntCompany"
+                        resultMap="companyResultMap"/>
+    </resultMap>
+
+    <resultMap id="companyResultMap" type="com.cnfwsy.interfaces.bean.ent.EntCompany">
+        <id property="id" column="id"></id>
+        <result column="company_size_id" property="companySizeId"></result>
+        <result column="third_kind" property="thirdKind"></result>
+        <result column="company_name" property="companyName"></result>
+        <result column="city_id" property="cityId"></result>
+        <result column="contact_man" property="contactMan"></result>
+        <result column="del_flag" property="delFlag"></result>
+        <result column="province_id" property="provinceId"></result>
+        <result column="com_url" property="comUrl"></result>
+        <result column="city_name" property="cityName"></result>
+        <result column="company_logo_url" property="companyLogoUrl"></result>
+        <result column="area_name" property="areaName"></result>
+        <result column="email" property="email"></result>
+        <result column="company_type_name" property="companyTypeName"></result>
+        <result column="summary" property="summary"></result>
+        <result column="company_size_name" property="companySizeName"></result>
+        <result column="third_id" property="thirdId"></result>
+        <result column="mobile" property="mobile"></result>
+        <result column="telephone" property="telephone"></result>
+        <result column="update_time" property="updateTime"></result>
+        <result column="company_licence_url" property="companyLicenceUrl"></result>
+        <result column="url" property="url"></result>
+        <result column="company_id" property="companyId"></result>
+        <result column="area_id" property="areaId"></result>
+        <result column="create_time" property="createTime"></result>
+        <result column="company_address" property="companyAddress"></result>
+        <result column="step" property="step"></result>
+        <result column="company_type_id" property="companyTypeId"></result>
+        <result column="province_name" property="provinceName"></result>
+        <result column="status" property="status"></result>
+        <result column="industry_id" property="industryId"></result>
+        <result column="industry_name" property="industryName"></result>
+        <result column="industry_id2" property="industryId2"></result>
+        <result column="industry_name2" property="industryName"></result>
+    </resultMap>
+
+
+
+    <select id="queryInfo" resultType="com.cnfwsy.interfaces.bean.ent.EntJobinfo">
+        select
+        <include refid="searchInfoSql"/>
+        FROM    t_ent_jobinfo a
+        WHERE
+        job_id = #{jobId}
+        limit 1
+    </select>
+
+    <select id="listInfosCounts" resultType="Integer">
+        SELECT COUNT(*)
+        FROM  t_ent_jobinfo a
+        where del_flag=0
+    </select>
+
+    <select id="listFilteredInfosCounts" resultType="Integer">
+        SELECT
+        count(*)
+        FROM  t_ent_jobinfo a,t_ent_company b
+        WHERE a.del_flag=0
+        and a.company_id=b.company_id
+        <if test="thirdKind !=null and thirdKind != ''">
+            and a.third_kind  = #{thirdKind}
+        </if>
+        <if test="salaryEnd !=null and salaryEnd != '' ">
+            <![CDATA[
+              and ((a.salary_start <= #{salaryEnd}
+                and a.salary_start >= #{salaryStart})
+                or (a.salary_end <= #{salaryEnd}
+                and a.salary_end >= #{salaryStart}))
+
+            ]]>
+        </if>
+        <!--<if test="salaryStart !=null and salaryStart != ''">
+            <![CDATA[ and  a.salary_start  >= #{salaryStart} ]]>
+        </if>-->
+        <if test="endDate !=null and endDate != ''">
+            and a.end_date  = #{endDate}
+        </if>
+        <if test="jobTypeName !=null and jobTypeName != ''">
+            and a.job_type_name   like '%${jobTypeName}%'
+        </if>
+        <if test="companyName !=null and companyName != ''">
+            and  a.company_name   like '%${companyName}%'
+        </if>
+        <if test="publishDate !=null and publishDate != ''">
+            and  a.publish_date  = #{publishDate}
+        </if>
+        <if test="cityId !=null and cityId != ''">
+            and  a.city_id  = #{cityId}
+        </if>
+        <if test="proRequrId !=null and proRequrId != ''">
+            and  a.pro_requr_id  = #{proRequrId}
+        </if>
+        <if test="titleRequr !=null and titleRequr != ''">
+            and  a.title_requr   like '%${titleRequr}%'
+        </if>
+        <if test="ageRequrId !=null and ageRequrId != ''">
+            and a.age_requr_id  = #{ageRequrId}
+        </if>
+        <if test="jobWelfare !=null and jobWelfare != ''">
+            and  a.job_welfare  = #{jobWelfare}
+        </if>
+        <if test="jobNatureName !=null and jobNatureName != ''">
+            and  a.job_nature_name   like '%${jobNatureName}%'
+        </if>
+        <if test="experienceId !=null and experienceId != ''">
+            and  a.experience_id  = #{experienceId}
+        </if>
+        <if test="comUrl !=null and comUrl != ''">
+            and   a.com_url  = #{comUrl}
+        </if>
+        <if test="jobTypeSubName !=null and jobTypeSubName != ''">
+            and a.job_type_sub_name   like '%${jobTypeSubName}%'
+        </if>
+        <if test="jobNatureId !=null and jobNatureId != ''">
+            and  a.job_nature_id  = #{jobNatureId}
+        </if>
+        <if test="educationId !=null and educationId != ''">
+            and   a.education_id  = #{educationId}
+        </if>
+        <if test="cityName !=null and cityName != ''">
+            and a.city_name  like '%${cityName}%'
+        </if>
+        <if test="areaName !=null and areaName != ''">
+            and a.area_name   like '%${areaName}%'
+        </if>
+        <if test="educationName !=null and educationName != ''">
+            and  a.education_name  like '%${educationName}%'
+        </if>
+        <if test="experienceName !=null and experienceName != ''">
+            and  a.experience_name like '%${experienceName}%'
+        </if>
+        <if test="jobUrl !=null and jobUrl != ''">
+            and  a.job_url  = #{jobUrl}
+        </if>
+        <if test="jobTypeId !=null and jobTypeId != ''">
+            and  a.job_type_id  = #{jobTypeId}
+        </if>
+        <if test="monthlyPayId !=null and monthlyPayId != ''">
+            and a.monthly_pay_id  = #{monthlyPayId}
+        </if>
+        <if test="jobName !=null and jobName != ''">
+            and a.job_name   like '%${jobName}%'
+        </if>
+        <if test="address !=null and address != ''">
+            and a.address  like '%${address}%'
+        </if>
+        <if test="quantity !=null and quantity != ''">
+            and  a.quantity  = #{quantity}
+        </if>
+        <if test="thirdId !=null and thirdId != ''">
+            and a.third_id  = #{thirdId}
+        </if>
+        <if test="proRequr !=null and proRequr != ''">
+            and a.pro_requr   like '%${proRequr}%'
+        </if>
+        <if test="provinceId !=null and provinceId != ''">
+            and a.province_id   like '%${provinceId}%'
+        </if>
+        <if test="jobDesc !=null and jobDesc != ''">
+            and  a.job_desc   like '%${jobDesc}%'
+        </if>
+        <if test="titleRequrId !=null and titleRequrId != ''">
+            and a.title_requr_id  = #{titleRequrId}
+        </if>
+        <if test="jobId !=null and jobId != ''">
+            and  a.job_id  = #{jobId}
+        </if>
+
+        <if test="companyId !=null and companyId != ''">
+            and  a.company_id  = #{companyId}
+        </if>
+        <if test="areaId !=null and areaId != ''">
+            and  a.area_id  = #{areaId}
+        </if>
+        <if test="jobTypeSubId !=null and jobTypeSubId != ''">
+            and a.job_type_sub_id  = #{jobTypeSubId}
+        </if>
+        <if test="step !=null and step != ''">
+            and a.step  = #{step}
+        </if>
+        <if test="provinceName !=null and provinceName != ''">
+            and a.province_name   like '%${provinceName}%'
+        </if>
+        <if test="payroll !=null and payroll != ''">
+            and a.payroll  = #{payroll}
+        </if>
+        <if test="ageRequr !=null and ageRequr != ''">
+            and a.age_requr  = #{ageRequr}
+        </if>
+        <if test="status !=null and status != ''">
+            and a.status  = #{status}
+        </if>
+        <if test="jobMail !=null and jobMail != ''">
+            and a.job_mail  =#{jobMail}
+        </if>
+        <if test="hrMail !=null and hrMail != ''">
+            and a.hr_mail  =#{hrMail}
+        </if>
+        <if test="online !=null">
+            and a.online  = #{online}
+        </if>
+        <if test="companySizeName !=null and companySizeName != ''">
+            and  b.company_size_name  =#{companySizeName}
+        </if>
+        <if test="companyTypeName !=null and companyTypeName != ''">
+            and  b.company_type_name  =#{companyTypeName}
+        </if>
+
+    </select>
+
+    <select id="searchInfos" resultMap="EntJobList">
+        SELECT
+          <include refid="listSql"/>,b.*
+        FROM  t_ent_jobinfo a,t_ent_company b
+        WHERE a.del_flag=0
+        and a.company_id=b.company_id
+        <if test="thirdKind !=null and thirdKind != ''">
+            and a.third_kind  = #{thirdKind}
+        </if>
+        <if test="salaryEnd !=null and salaryEnd != '' ">
+            <![CDATA[
+              and ((a.salary_start <= #{salaryEnd}
+                and a.salary_start >= #{salaryStart})
+                or (a.salary_end <= #{salaryEnd}
+                and a.salary_end >= #{salaryStart}))
+
+            ]]>
+        </if>
+        <!--<if test="salaryStart !=null and salaryStart != ''">
+            <![CDATA[ and  a.salary_start  >= #{salaryStart} ]]>
+        </if>-->
+        <if test="endDate !=null and endDate != ''">
+            and a.end_date  = #{endDate}
+        </if>
+        <if test="jobTypeName !=null and jobTypeName != ''">
+            and a.job_type_name   like '%${jobTypeName}%'
+        </if>
+        <if test="companyName !=null and companyName != ''">
+            and  a.company_name   like '%${companyName}%'
+        </if>
+        <if test="publishDate !=null and publishDate != ''">
+            and  a.publish_date  = #{publishDate}
+        </if>
+        <if test="cityId !=null and cityId != ''">
+            and  a.city_id  = #{cityId}
+        </if>
+        <if test="proRequrId !=null and proRequrId != ''">
+            and  a.pro_requr_id  = #{proRequrId}
+        </if>
+        <if test="titleRequr !=null and titleRequr != ''">
+            and  a.title_requr   like '%${titleRequr}%'
+        </if>
+        <if test="ageRequrId !=null and ageRequrId != ''">
+            and a.age_requr_id  = #{ageRequrId}
+        </if>
+        <if test="jobWelfare !=null and jobWelfare != ''">
+            and  a.job_welfare  = #{jobWelfare}
+        </if>
+        <if test="jobNatureName !=null and jobNatureName != ''">
+            and  a.job_nature_name   like '%${jobNatureName}%'
+        </if>
+        <if test="experienceId !=null and experienceId != ''">
+            and  a.experience_id  = #{experienceId}
+        </if>
+        <if test="comUrl !=null and comUrl != ''">
+            and   a.com_url  = #{comUrl}
+        </if>
+        <if test="jobTypeSubName !=null and jobTypeSubName != ''">
+            and a.job_type_sub_name   like '%${jobTypeSubName}%'
+        </if>
+        <if test="jobNatureId !=null and jobNatureId != ''">
+            and  a.job_nature_id  = #{jobNatureId}
+        </if>
+        <if test="educationId !=null and educationId != ''">
+            and   a.education_id  = #{educationId}
+        </if>
+        <if test="cityName !=null and cityName != ''">
+            and a.city_name  like '%${cityName}%'
+        </if>
+        <if test="areaName !=null and areaName != ''">
+            and a.area_name   like '%${areaName}%'
+        </if>
+        <if test="educationName !=null and educationName != ''">
+            and  a.education_name  like '%${educationName}%'
+        </if>
+        <if test="experienceName !=null and experienceName != ''">
+            and  a.experience_name like '%${experienceName}%'
+        </if>
+        <if test="jobUrl !=null and jobUrl != ''">
+            and  a.job_url  = #{jobUrl}
+        </if>
+        <if test="jobTypeId !=null and jobTypeId != ''">
+            and  a.job_type_id  = #{jobTypeId}
+        </if>
+        <if test="monthlyPayId !=null and monthlyPayId != ''">
+            and a.monthly_pay_id  = #{monthlyPayId}
+        </if>
+        <if test="jobName !=null and jobName != ''">
+            and a.job_name   like '%${jobName}%'
+        </if>
+        <if test="address !=null and address != ''">
+            and a.address  like '%${address}%'
+        </if>
+        <if test="quantity !=null and quantity != ''">
+            and  a.quantity  = #{quantity}
+        </if>
+        <if test="thirdId !=null and thirdId != ''">
+            and a.third_id  = #{thirdId}
+        </if>
+        <if test="proRequr !=null and proRequr != ''">
+            and a.pro_requr   like '%${proRequr}%'
+        </if>
+        <if test="provinceId !=null and provinceId != ''">
+            and a.province_id   like '%${provinceId}%'
+        </if>
+        <if test="jobDesc !=null and jobDesc != ''">
+            and  a.job_desc   like '%${jobDesc}%'
+        </if>
+        <if test="titleRequrId !=null and titleRequrId != ''">
+            and a.title_requr_id  = #{titleRequrId}
+        </if>
+        <if test="jobId !=null and jobId != ''">
+            and  a.job_id  = #{jobId}
+        </if>
+
+        <if test="companyId !=null and companyId != ''">
+            and  a.company_id  = #{companyId}
+        </if>
+        <if test="areaId !=null and areaId != ''">
+            and  a.area_id  = #{areaId}
+        </if>
+        <if test="jobTypeSubId !=null and jobTypeSubId != ''">
+            and a.job_type_sub_id  = #{jobTypeSubId}
+        </if>
+        <if test="step !=null and step != ''">
+            and a.step  = #{step}
+        </if>
+        <if test="provinceName !=null and provinceName != ''">
+            and a.province_name   like '%${provinceName}%'
+        </if>
+        <if test="payroll !=null and payroll != ''">
+            and a.payroll  = #{payroll}
+        </if>
+        <if test="ageRequr !=null and ageRequr != ''">
+            and a.age_requr  = #{ageRequr}
+        </if>
+        <if test="status !=null and status != ''">
+            and a.status  = #{status}
+        </if>
+        <if test="jobMail !=null and jobMail != ''">
+            and a.job_mail  =#{jobMail}
+        </if>
+        <if test="hrMail !=null and hrMail != ''">
+            and a.hr_mail  =#{hrMail}
+        </if>
+        <if test="online !=null">
+            and a.online  = #{online}
+        </if>
+        <if test="companySizeName !=null and companySizeName != ''">
+            and  b.company_size_name  =#{companySizeName}
+        </if>
+        <if test="companyTypeName !=null and companyTypeName != ''">
+            and  b.company_type_name  =#{companyTypeName}
+        </if>
+        order by a.publish_date desc
+        limit #{start},#{pageSize}
+    </select>
+
+    <update id="updateInfo">
+        update
+        t_ent_jobinfo  a
+        <set>
+            <if test="thirdKind !=null and thirdKind != ''">
+            third_kind  =#{thirdKind},
+            </if>
+            <if test="salaryEnd !=null and salaryEnd != ''">
+            salary_end  =#{salaryEnd},
+            </if>
+            <if test="endDate !=null and endDate != ''">
+            end_date  =#{endDate},
+            </if>
+            <if test="jobTypeName !=null and jobTypeName != ''">
+            job_type_name  =#{jobTypeName},
+            </if>
+            <if test="companyName !=null and companyName != ''">
+            company_name  =#{companyName},
+            </if>
+            <if test="publishDate !=null and publishDate != ''">
+            publish_date  =DATE_FORMAT(sysdate(),'%Y-%m-%d'),
+            </if>
+            <if test="cityId !=null and cityId != ''">
+            city_id  =#{cityId},
+            </if>
+            <if test="delFlag !=null and delFlag != ''">
+            del_flag  =#{delFlag},
+            </if>
+            <if test="proRequrId !=null and proRequrId != ''">
+            pro_requr_id  =#{proRequrId},
+            </if>
+            <if test="titleRequr !=null and titleRequr != ''">
+            title_requr  =#{titleRequr},
+            </if>
+            <if test="ageRequrId !=null and ageRequrId != ''">
+            age_requr_id  =#{ageRequrId},
+            </if>
+            <if test="jobWelfare !=null and jobWelfare != ''">
+            job_welfare  =#{jobWelfare},
+            </if>
+            <if test="jobNatureName !=null and jobNatureName != ''">
+            job_nature_name  =#{jobNatureName},
+            </if>
+            <if test="experienceId !=null and experienceId != ''">
+            experience_id  =#{experienceId},
+            </if>
+            <if test="comUrl !=null and comUrl != ''">
+            com_url  =#{comUrl},
+            </if>
+            <if test="jobTypeSubName !=null and jobTypeSubName != ''">
+            job_type_sub_name  =#{jobTypeSubName},
+            </if>
+            <if test="jobNatureId !=null and jobNatureId != ''">
+            job_nature_id  =#{jobNatureId},
+            </if>
+            <if test="educationId !=null and educationId != ''">
+            education_id  =#{educationId},
+            </if>
+            <if test="cityName !=null and cityName != ''">
+            city_name  =#{cityName},
+            </if>
+            <if test="areaName !=null and areaName != ''">
+            area_name  =#{areaName},
+            </if>
+            <if test="educationName !=null and educationName != ''">
+            education_name  =#{educationName},
+            </if>
+            <if test="experienceName !=null and experienceName != ''">
+            experience_name  =#{experienceName},
+            </if>
+            <if test="jobUrl !=null and jobUrl != ''">
+            job_url  =#{jobUrl},
+            </if>
+            <if test="id !=null and id != ''">
+            id  =#{id},
+            </if>
+            <if test="jobTypeId !=null and jobTypeId != ''">
+            job_type_id  =#{jobTypeId},
+            </if>
+            <if test="monthlyPayId !=null and monthlyPayId != ''">
+            monthly_pay_id  =#{monthlyPayId},
+            </if>
+            <if test="jobName !=null and jobName != ''">
+            job_name  =#{jobName},
+            </if>
+            <if test="address !=null and address != ''">
+            address  =#{address},
+            </if>
+            <if test="quantity !=null and quantity != ''">
+            quantity  =#{quantity},
+            </if>
+            <if test="thirdId !=null and thirdId != ''">
+            third_id  =#{thirdId},
+            </if>
+            <if test="proRequr !=null and proRequr != ''">
+            pro_requr  =#{proRequr},
+            </if>
+            update_time  =sysdate(),
+            <if test="provinceId !=null and provinceId != ''">
+            province_id  =#{provinceId},
+            </if>
+            <if test="jobDesc !=null and jobDesc != ''">
+            job_desc  =#{jobDesc},
+            </if>
+            <if test="titleRequrId !=null and titleRequrId != ''">
+            title_requr_id  =#{titleRequrId},
+            </if>
+            <if test="jobId !=null and jobId != ''">
+            job_id  =#{jobId},
+            </if>
+            <if test="salaryStart !=null and salaryStart != ''">
+            salary_start  =#{salaryStart},
+            </if>
+            <if test="companyId !=null and companyId != ''">
+            company_id  =#{companyId},
+            </if>
+            <if test="areaId !=null and areaId != ''">
+            area_id  =#{areaId},
+            </if>
+            <if test="createTime !=null and createTime != ''">
+            create_time  =#{createTime},
+            </if>
+            <if test="jobTypeSubId !=null and jobTypeSubId != ''">
+            job_type_sub_id  =#{jobTypeSubId},
+            </if>
+            <if test="step !=null and step != ''">
+            step  =#{step},
+            </if>
+            <if test="provinceName !=null and provinceName != ''">
+            province_name  =#{provinceName},
+            </if>
+            <if test="payroll !=null and payroll != ''">
+            payroll  =#{payroll},
+            </if>
+            <if test="ageRequr !=null and ageRequr != ''">
+            age_requr  =#{ageRequr},
+            </if>
+            <if test="status !=null and status != ''">
+            status  =#{status},
+            </if>
+            <if test="jobMail !=null and jobMail != ''">
+                job_mail  =#{jobMail},
+            </if>
+            <if test="hrMail !=null and hrMail != ''">
+                hr_mail  =#{hrMail},
+            </if>
+            <if test="online !=null and online != '' or online ==0 ">
+                online  = #{online},
+            </if>
+        </set>
+        WHERE
+        job_id = #{jobId}
+    </update>
+
+    <update id="del">
+        update  t_ent_jobinfo a
+        set  del_flag=1
+        where
+        job_id = #{jobId}
+    </update>
+
+
+    <insert id="add">
+        insert into
+        t_ent_jobinfo(online,third_kind,salary_end,end_date,job_type_name,company_name,publish_date,city_id,pro_requr_id,title_requr,age_requr_id,job_welfare,job_nature_name,experience_id,com_url,job_type_sub_name,job_nature_id,education_id,city_name,area_name,education_name,experience_name,job_url,job_type_id,monthly_pay_id,job_name,address,quantity,third_id,pro_requr,province_id,job_desc,title_requr_id,job_id,salary_start,company_id,area_id,job_type_sub_id,step,province_name,payroll,age_requr,status,job_mail,hr_mail)
+        values (#{online},#{thirdKind},#{salaryEnd}*1000,#{endDate},#{jobTypeName},#{companyName},DATE_FORMAT(sysdate(),'%Y-%m-%d'),#{cityId},#{proRequrId},#{titleRequr},#{ageRequrId},#{jobWelfare},#{jobNatureName},#{experienceId},#{comUrl},#{jobTypeSubName},#{jobNatureId},#{educationId},#{cityName},#{areaName},#{educationName},#{experienceName},#{jobUrl},#{jobTypeId},#{monthlyPayId},#{jobName},#{address},#{quantity},#{thirdId},#{proRequr},#{provinceId},#{jobDesc},#{titleRequrId},#{jobId},#{salaryStart}*1000,#{companyId},#{areaId},#{jobTypeSubId},#{step},#{provinceName},#{payroll},#{ageRequr},#{status},#{jobMail},#{hrMail})
+    </insert>
+
+    <select id="queryHotJobs" resultMap="EntJobList">
+        SELECT
+        <include refid="searchInfoSql"/>
+        FROM t_ent_jobinfo where id  in (select max(id) from t_ent_jobinfo GROUP BY company_name) and (address like CONCAT('%','${areaName}','%' ) or company_name like CONCAT('%','${areaName}','%' )) order by salary_end desc limit 16
+    </select>
+
+    <select id="queryLatestJobs" resultMap="EntJobList">
+        SELECT
+        <include refid="searchInfoSql"/>
+        FROM t_ent_jobinfo where id  in (select max(id) from t_ent_jobinfo GROUP BY company_name) and (address like CONCAT('%','${areaName}','%' ) or company_name like CONCAT('%','${areaName}','%' )) order by update_time desc limit 16
+    </select>
+
+</mapper>

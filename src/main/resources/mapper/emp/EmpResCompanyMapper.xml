@@ -1,0 +1,233 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cnfwsy.interfaces.mapper.emp.EmpResCompanyMapper">
+
+    <sql id="searchInfoSql">
+        `id` AS id,
+        `company_start_year` AS  companyStartYear,
+        `company_end_year` AS  companyEndYear,
+        `end_date` AS  endDate,
+        `company_name` AS  companyName,
+        `logo_path` AS  logoPath,
+        `employee_id` AS  employeeId,
+        `update_time` AS  updateTime,
+        `company_end_month` AS  companyEndMonth,
+        `del_flag` AS  delFlag,
+        `position_name` AS  positionName,
+        `company_id` AS  companyId,
+        `resume_id` AS  resumeId,
+        `position_id` AS  positionId,
+        `create_time` AS  createTime,
+        `id` AS  id,
+        `text` AS  text,
+        `company_start_month` AS  companyStartMonth,
+        `start_date` AS  startDate
+    </sql>
+
+
+    <select id="queryInfo" resultType="com.cnfwsy.interfaces.bean.emp.EmpResCompany">
+        select
+        <include refid="searchInfoSql"/>
+        FROM    t_emp_res_company a
+        WHERE
+            `company_id` = #{companyId}
+        limit 1
+    </select>
+
+    <select id="listInfosCounts" resultType="Integer">
+        SELECT COUNT(*)
+        FROM  t_emp_res_company a
+        where `del_flag`=0
+    </select>
+
+    <select id="listFilteredInfosCounts" resultType="Integer">
+        SELECT COUNT(*)
+        FROM  t_emp_res_company
+        where `del_flag`=0
+         <if test="companyStartYear !=null and companyStartYear != ''">
+            and  `company_start_year`  =#{companyStartYear}
+         </if>
+         <if test="companyEndYear !=null and companyEndYear != ''">
+            and  `company_end_year`  =#{companyEndYear}
+         </if>
+         <if test="endDate !=null and endDate != ''">
+            and  `end_date`  =#{endDate}
+         </if>
+         <if test="companyName !=null and companyName != ''">
+            and  `company_name`  =#{companyName}
+         </if>
+         <if test="logoPath !=null and logoPath != ''">
+            and  `logo_path`  =#{logoPath}
+         </if>
+         <if test="employeeId !=null and employeeId != ''">
+            and  `employee_id`  =#{employeeId}
+         </if>
+         <if test="updateTime !=null and updateTime != ''">
+            and  `update_time`  =#{updateTime}
+         </if>
+         <if test="companyEndMonth !=null and companyEndMonth != ''">
+            and  `company_end_month`  =#{companyEndMonth}
+         </if>
+         <if test="delFlag !=null and delFlag != ''">
+            and  `del_flag`  =#{delFlag}
+         </if>
+         <if test="positionName !=null and positionName != ''">
+            and  `position_name`  =#{positionName}
+         </if>
+         <if test="companyId !=null and companyId != ''">
+            and  `company_id`  =#{companyId}
+         </if>
+         <if test="resumeId !=null and resumeId != ''">
+            and  `resume_id`  =#{resumeId}
+         </if>
+         <if test="positionId !=null and positionId != ''">
+            and  `position_id`  =#{positionId}
+         </if>
+         <if test="createTime !=null and createTime != ''">
+            and  `create_time`  =#{createTime}
+         </if>
+         <if test="id !=null and id != ''">
+            and  `id`  =#{id}
+         </if>
+         <if test="text !=null and text != ''">
+            and  `text`  =#{text}
+         </if>
+         <if test="companyStartMonth !=null and companyStartMonth != ''">
+            and  `company_start_month`  =#{companyStartMonth}
+         </if>
+         <if test="startDate !=null and startDate != ''">
+            and  `start_date`  =#{startDate}
+         </if>
+    </select>
+
+    <select id="searchInfos" resultType="com.cnfwsy.interfaces.bean.emp.EmpResCompany">
+        SELECT
+        <include refid="searchInfoSql"/>
+        FROM  t_emp_res_company a
+        WHERE del_flag=0
+        <if test="companyStartYear !=null and companyStartYear != ''">
+            and  `company_start_year`  =#{companyStartYear}
+        </if>
+        <if test="companyEndYear !=null and companyEndYear != ''">
+            and  `company_end_year`  =#{companyEndYear}
+        </if>
+        <if test="endDate !=null and endDate != ''">
+            and  `end_date`  =#{endDate}
+        </if>
+        <if test="companyName !=null and companyName != ''">
+            and  `company_name`  =#{companyName}
+        </if>
+        <if test="logoPath !=null and logoPath != ''">
+            and  `logo_path`  =#{logoPath}
+        </if>
+        <if test="employeeId !=null and employeeId != ''">
+            and  `employee_id`  =#{employeeId}
+        </if>
+        <if test="updateTime !=null and updateTime != ''">
+            and  `update_time`  =#{updateTime}
+        </if>
+        <if test="companyEndMonth !=null and companyEndMonth != ''">
+            and  `company_end_month`  =#{companyEndMonth}
+        </if>
+        <if test="delFlag !=null and delFlag != ''">
+            and  `del_flag`  =#{delFlag}
+        </if>
+        <if test="positionName !=null and positionName != ''">
+            and  `position_name`  =#{positionName}
+        </if>
+        <if test="companyId !=null and companyId != ''">
+            and  `company_id`  =#{companyId}
+        </if>
+        <if test="resumeId !=null and resumeId != ''">
+            and  `resume_id`  =#{resumeId}
+        </if>
+        <if test="positionId !=null and positionId != ''">
+            and  `position_id`  =#{positionId}
+        </if>
+        <if test="createTime !=null and createTime != ''">
+            and  `create_time`  =#{createTime}
+        </if>
+        <if test="id !=null and id != ''">
+            and  `id`  =#{id}
+        </if>
+        <if test="text !=null and text != ''">
+            and  `text`  =#{text}
+        </if>
+        <if test="companyStartMonth !=null and companyStartMonth != ''">
+            and  `company_start_month`  =#{companyStartMonth}
+        </if>
+        <if test="startDate !=null and startDate != ''">
+            and  `start_date`  =#{startDate}
+        </if>
+        limit #{start},#{pageSize}
+    </select>
+
+    <update id="updateInfo">
+        update
+            t_emp_res_company  a
+        <set>
+            <if test="companyStartYear !=null and companyStartYear != ''">
+                `company_start_year`  = #{companyStartYear},
+            </if>
+            <if test="companyEndYear !=null and companyEndYear != ''">
+                `company_end_year`  = #{companyEndYear},
+            </if>
+            <if test="endDate !=null and endDate != ''">
+                `end_date`  = #{endDate},
+            </if>
+            <if test="companyName !=null and companyName != ''">
+                `company_name`  = #{companyName},
+            </if>
+            <if test="logoPath !=null and logoPath != ''">
+                `logo_path`  = #{logoPath},
+            </if>
+            <if test="employeeId !=null and employeeId != ''">
+                `employee_id`  = #{employeeId},
+            </if>
+            <if test="companyEndMonth !=null and companyEndMonth != ''">
+                `company_end_month`  = #{companyEndMonth},
+            </if>
+            <if test="positionName !=null and positionName != ''">
+                `position_name`  = #{positionName},
+            </if>
+            <if test="companyId !=null and companyId != ''">
+                `company_id`  = #{companyId},
+            </if>
+            <if test="resumeId !=null and resumeId != ''">
+                `resume_id`  = #{resumeId},
+            </if>
+            <if test="positionId !=null and positionId != ''">
+                `position_id`  = #{positionId},
+            </if>
+            <if test="text !=null and text != ''">
+                `text`  = #{text},
+            </if>
+            <if test="companyStartMonth !=null and companyStartMonth != ''">
+                `company_start_month`  = #{companyStartMonth},
+            </if>
+            <if test="startDate !=null and startDate != ''">
+                `start_date`  = #{startDate},
+            </if>
+        </set>
+        WHERE
+            `company_id` = #{companyId}
+    </update>
+
+    <update id="del">
+        update  t_emp_res_company a
+        set  `del_flag`=1
+        where
+            `company_id` = #{companyId}
+    </update>
+
+
+    <insert id="add">
+        insert into
+        t_emp_res_company(`company_start_year`,`company_end_year`,`end_date`,`company_name`,`logo_path`,`employee_id`,`company_end_month`,`position_name`,`company_id`,`resume_id`,`position_id`,`text`,`company_start_month`,`start_date`)
+        values (#{companyStartYear},#{companyEndYear},#{endDate},#{companyName},#{logoPath},#{employeeId},#{companyEndMonth},#{positionName},#{companyId},#{resumeId},#{positionId},#{text},#{companyStartMonth},#{startDate})
+    </insert>
+
+
+</mapper>

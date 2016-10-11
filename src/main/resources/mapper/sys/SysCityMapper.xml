@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cnfwsy.interfaces.mapper.sys.SysCityMapper">
+
+    <sql id="searchInfoSql">
+        `id` AS id,
+        `city_name` AS  cityName,
+        `city_id` AS  cityId,
+        `state` AS  state,
+        `id` AS  id,
+        `province_id` AS  provinceId
+    </sql>
+
+    <select id="querySysCityByCityName" resultType="com.cnfwsy.interfaces.bean.sys.SysCity">
+        select
+        <include refid="searchInfoSql"/>
+        FROM t_sys_city a
+        WHERE
+        city_name = #{cityName}
+        limit 1
+    </select>
+
+    <select id="queryInfo" resultType="com.cnfwsy.interfaces.bean.sys.SysCity">
+        select
+        <include refid="searchInfoSql"/>
+        FROM    t_sys_city a
+        WHERE
+            `city_id` = #{cityId}
+        limit 1
+    </select>
+
+    <select id="listInfosCounts" resultType="Integer">
+        SELECT COUNT(*)
+        FROM  t_sys_city a
+        where `del_flag`=0
+    </select>
+
+    <select id="listFilteredInfosCounts" resultType="Integer">
+        SELECT COUNT(*)
+        FROM  t_sys_city
+        where `del_flag`=0
+         <if test="cityName !=null and cityName != ''">
+            and  `city_name`  =#{cityName}
+         </if>
+         <if test="cityId !=null and cityId != ''">
+            and  `city_id`  =#{cityId}
+         </if>
+         <if test="state !=null and state != ''">
+            and  `state`  =#{state}
+         </if>
+         <if test="id !=null and id != ''">
+            and  `id`  =#{id}
+         </if>
+         <if test="provinceId !=null and provinceId != ''">
+            and  `province_id`  =#{provinceId}
+         </if>
+    </select>
+
+    <select id="searchInfos" resultType="com.cnfwsy.interfaces.bean.sys.SysCity">
+        SELECT
+        <include refid="searchInfoSql"/>
+        FROM  t_sys_city a
+        WHERE del_flag=0
+        <if test="cityName !=null and cityName != ''">
+            and  `city_name`  =#{cityName}
+        </if>
+        <if test="cityId !=null and cityId != ''">
+            and  `city_id`  =#{cityId}
+        </if>
+        <if test="state !=null and state != ''">
+            and  `state`  =#{state}
+        </if>
+        <if test="id !=null and id != ''">
+            and  `id`  =#{id}
+        </if>
+        <if test="provinceId !=null and provinceId != ''">
+            and  `province_id`  =#{provinceId}
+        </if>
+        limit #{start},#{pageSize}
+    </select>
+
+    <update id="updateInfo">
+        update
+            t_sys_city  a
+        <set>
+            <if test="cityName !=null and cityName != ''">
+                `city_name`  = #{cityName},
+            </if>
+            <if test="cityId !=null and cityId != ''">
+                `city_id`  = #{cityId},
+            </if>
+            <if test="state !=null and state != ''">
+                `state`  = #{state},
+            </if>
+            <if test="provinceId !=null and provinceId != ''">
+                `province_id`  = #{provinceId},
+            </if>
+        </set>
+        WHERE
+            `city_id` = #{cityId}
+    </update>
+
+    <update id="del">
+        update  t_sys_city a
+        set  `del_flag`=1
+        where `city_id` = #{cityId}
+    </update>
+
+
+    <insert id="add">
+        insert into
+          t_sys_city(`city_name`,`city_id`,`state`,`province_id`)
+        values (#{cityName},#{cityId},#{state},#{provinceId})
+    </insert>
+
+    <select id="options" resultType="Map">
+        select city_id,city_name
+        FROM t_sys_city
+        order by city_id asc
+    </select>
+
+    <select id="options2" resultType="Map">
+        select city_id,city_name
+        FROM t_sys_city
+        where province_id= #{provinceId}
+        order by city_id asc
+    </select>
+
+</mapper>

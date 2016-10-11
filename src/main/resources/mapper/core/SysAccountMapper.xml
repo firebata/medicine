@@ -1,0 +1,216 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cnfwsy.core.mapper.SysAccountMapper">
+
+    <sql id="searchInfoSql">
+        `id` AS id,
+        `qq` AS  qq,
+        `update_time` AS  updateTime,
+        `del_flag` AS  delFlag,
+        `tel_no` AS  telNo,
+        `account_id` AS  accountId,
+        `password` AS  password,
+        `weixin` AS  weixin,
+        `weibo` AS  weibo,
+        `create_time` AS  createTime,
+        `name` AS  name,
+        `type_id` AS  typeId,
+        `id` AS  id,
+        `email` AS  email,
+        `buss_id` AS  bussId
+    </sql>
+
+
+    <select id="queryInfo" resultType="com.cnfwsy.core.bean.SysAccount">
+        select
+        <include refid="searchInfoSql"/>
+        FROM    t_sys_account a
+        WHERE
+            `account_id` = #{accountId}
+        limit 1
+    </select>
+
+    <select id="listInfosCounts" resultType="Integer">
+        SELECT COUNT(*)
+        FROM  t_sys_account a
+        where `del_flag`=0
+    </select>
+
+    <select id="listFilteredInfosCounts" resultType="Integer">
+        SELECT COUNT(*)
+        FROM  t_sys_account
+        where `del_flag`=0
+         <if test="qq !=null and qq != ''">
+            and  `qq`  =#{qq}
+         </if>
+         <if test="delFlag !=null and delFlag != ''">
+            and  `del_flag`  =#{delFlag}
+         </if>
+         <if test="telNo !=null and telNo != ''">
+            and  `tel_no`  =#{telNo}
+         </if>
+         <if test="accountId !=null and accountId != ''">
+            and  `account_id`  =#{accountId}
+         </if>
+         <if test="password !=null and password != ''">
+            and  `password`  =#{password}
+         </if>
+        <if test="bussId !=null and bussId != ''">
+            and  `buss_id`  =#{bussId}
+        </if>
+         <if test="weixin !=null and weixin != ''">
+            and  `weixin`  =#{weixin}
+         </if>
+         <if test="weibo !=null and weibo != ''">
+            and  `weibo`  =#{weibo}
+         </if>
+         <if test="name !=null and name != ''">
+            and  `name`  =#{name}
+         </if>
+         <if test="typeId !=null and typeId != ''">
+            and  `type_id`  =#{typeId}
+         </if>
+         <if test="email !=null and email != ''">
+            and  `email`  =#{email}
+         </if>
+    </select>
+
+    <select id="searchInfos" resultType="com.cnfwsy.core.bean.SysAccount">
+        SELECT
+        <include refid="searchInfoSql"/>
+        FROM  t_sys_account a
+        WHERE del_flag=0
+        <if test="qq !=null and qq != ''">
+            and  `qq`  =#{qq}
+        </if>
+        <if test="delFlag !=null and delFlag != ''">
+            and  `del_flag`  =#{delFlag}
+        </if>
+        <if test="telNo !=null and telNo != ''">
+            and  `tel_no`  =#{telNo}
+        </if>
+        <if test="accountId !=null and accountId != ''">
+            and  `account_id`  =#{accountId}
+        </if>
+        <if test="password !=null and password != ''">
+            and  `password`  =#{password}
+        </if>
+        <if test="bussId !=null and bussId != ''">
+            and  `buss_id`  =#{bussId}
+        </if>
+        <if test="weixin !=null and weixin != ''">
+            and  `weixin`  =#{weixin}
+        </if>
+        <if test="weibo !=null and weibo != ''">
+            and  `weibo`  =#{weibo}
+        </if>
+        <if test="name !=null and name != ''">
+            and  `name`  =#{name}
+        </if>
+        <if test="typeId !=null and typeId != ''">
+            and  `type_id`  =#{typeId}
+        </if>
+        <if test="email !=null and email != ''">
+            and  `email`  =#{email}
+        </if>
+        limit #{start},#{pageSize}
+    </select>
+
+    <update id="updateInfo">
+        update
+            t_sys_account  a
+        <set>
+            <if test="qq !=null and qq != ''">
+                `qq`  = #{qq},
+            </if>
+            <if test="password !=null and password != ''">
+                `password`  = #{password},
+            </if>
+            <if test="weixin !=null and weixin != ''">
+                `weixin`  = #{weixin},
+            </if>
+            <if test="weibo !=null and weibo != ''">
+                `weibo`  = #{weibo},
+            </if>
+            <if test="name !=null and name != ''">
+                `name`  = #{name},
+            </if>
+            <if test="typeId !=null and typeId != ''">
+                `type_id`  = #{typeId},
+            </if>
+            <if test="telNo !=null and telNo != ''">
+                `tel_no`  = #{telNo},
+            </if>
+            <if test="email !=null and email != ''">
+                `email`  = #{email},
+            </if>
+            <if test="bussId !=null and bussId != ''">
+                `buss_id`  = #{bussId},
+            </if>
+        </set>
+        WHERE
+            `account_id` = #{accountId}
+    </update>
+
+    <update id="del">
+        update  t_sys_account a
+        set  `del_flag`=1
+        where
+            `account_id` = #{accountId}
+    </update>
+
+
+    <insert id="add">
+        insert into
+        t_sys_account(`qq`,`account_id`,`password`,`weixin`,`weibo`,`name`,`type_id`,`tel_no`,`email`,`buss_id`)
+        values (#{qq},#{accountId},#{password},#{weixin},#{weibo},#{name},#{typeId},#{telNo},#{email},#{bussId})
+    </insert>
+
+    <select id="queryAccount"  resultType="com.cnfwsy.core.bean.SysAccount">
+          select
+            <include refid="searchInfoSql"/>
+          from t_sys_account
+          where del_flag=0 and (
+            <if test="telNo !=null and telNo != ''">
+                `tel_no` =#{telNo}
+            </if>
+            <if test="email !=null and email != ''">
+                OR `email`  = #{email}
+            </if>
+            <if test="bussId !=null and bussId != ''">
+                OR `buss_id`  = #{bussId}
+            </if>
+        )
+    </select>
+
+    <update id="updatePWD">
+        update
+        t_sys_account  a
+        <set>
+            <if test="password !=null and password != ''">
+                `password`  = #{password},
+            </if>
+        </set>
+        WHERE
+        `account_id` = #{accountId}
+    </update>
+
+
+    <update id="updateUsr">
+        update
+        t_sys_account  a
+        <set>
+            <if test="name !=null and name != ''">
+                `name`  = #{name},
+            </if>
+            <if test="email !=null and email != ''">
+                `email`  = #{email},
+            </if>
+        </set>
+        WHERE
+        `account_id` = #{accountId}
+    </update>
+
+</mapper>

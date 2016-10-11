@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cnfwsy.interfaces.mapper.emp.EmpResumeMapper">
+
+    <sql id="searchInfoSql">
+        `id` AS id,
+        `resume_id` AS  resumeId,
+        `status_id` AS  statusId,
+        `create_time` AS  createTime,
+        `employee_id` AS  employeeId,
+        `update_time` AS  updateTime,
+        `id` AS  id,
+        `del_flag` AS  delFlag
+    </sql>
+
+
+    <select id="queryInfo" resultType="com.cnfwsy.interfaces.bean.emp.EmpResume">
+        select
+        <include refid="searchInfoSql"/>
+        FROM    t_emp_resume a
+        WHERE
+            `resume_id` = #{resumeId}
+        limit 1
+    </select>
+
+    <select id="listInfosCounts" resultType="Integer">
+        SELECT COUNT(*)
+        FROM  t_emp_resume a
+        where `del_flag`=0
+    </select>
+
+    <select id="listFilteredInfosCounts" resultType="Integer">
+        SELECT COUNT(*)
+        FROM  t_emp_resume
+        where `del_flag`=0
+         <if test="resumeId !=null and resumeId != ''">
+            and  `resume_id`  =#{resumeId}
+         </if>
+         <if test="statusId !=null and statusId != ''">
+            and  `status_id`  =#{statusId}
+         </if>
+         <if test="createTime !=null and createTime != ''">
+            and  `create_time`  =#{createTime}
+         </if>
+         <if test="employeeId !=null and employeeId != ''">
+            and  `employee_id`  =#{employeeId}
+         </if>
+         <if test="updateTime !=null and updateTime != ''">
+            and  `update_time`  =#{updateTime}
+         </if>
+         <if test="id !=null and id != ''">
+            and  `id`  =#{id}
+         </if>
+         <if test="delFlag !=null and delFlag != ''">
+            and  `del_flag`  =#{delFlag}
+         </if>
+    </select>
+
+    <select id="searchInfos" resultType="com.cnfwsy.interfaces.bean.emp.EmpResume">
+        SELECT
+        <include refid="searchInfoSql"/>
+        FROM  t_emp_resume a
+        WHERE del_flag=0
+        <if test="resumeId !=null and resumeId != ''">
+            and  `resume_id`  =#{resumeId}
+        </if>
+        <if test="statusId !=null and statusId != ''">
+            and  `status_id`  =#{statusId}
+        </if>
+        <if test="createTime !=null and createTime != ''">
+            and  `create_time`  =#{createTime}
+        </if>
+        <if test="employeeId !=null and employeeId != ''">
+            and  `employee_id`  =#{employeeId}
+        </if>
+        <if test="updateTime !=null and updateTime != ''">
+            and  `update_time`  =#{updateTime}
+        </if>
+        <if test="id !=null and id != ''">
+            and  `id`  =#{id}
+        </if>
+        <if test="delFlag !=null and delFlag != ''">
+            and  `del_flag`  =#{delFlag}
+        </if>
+        limit #{start},#{pageSize}
+    </select>
+
+    <update id="updateInfo">
+        update
+            t_emp_resume  a
+        <set>
+            <if test="resumeId !=null and resumeId != ''">
+                `resume_id`  = #{resumeId},
+            </if>
+            <if test="statusId !=null and statusId != ''">
+                `status_id`  = #{statusId},
+            </if>
+            <if test="employeeId !=null and employeeId != ''">
+                `employee_id`  = #{employeeId},
+            </if>
+        </set>
+        WHERE
+            `resume_id` = #{resumeId}
+    </update>
+
+    <update id="del">
+        update  t_emp_resume a
+        set  `del_flag`=1
+        where
+            `resume_id` = #{resumeId}
+    </update>
+
+
+    <insert id="add">
+        insert into
+        t_emp_resume(`resume_id`,`status_id`,`employee_id`)
+        values (#{resumeId},#{statusId},#{employeeId})
+    </insert>
+
+
+</mapper>

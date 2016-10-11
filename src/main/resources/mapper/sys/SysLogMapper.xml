@@ -1,0 +1,186 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cnfwsy.interfaces.mapper.sys.SysLogMapper">
+
+    <sql id="searchInfoSql">
+        `id` AS id,
+        `method` AS  method,
+        `description` AS  description,
+        `update_time` AS  updateTime,
+        `remark` AS  remark,
+        `type` AS  type,
+        `params` AS  params,
+        `user_name` AS  userName,
+        `del_flag` AS  delFlag,
+        `exp_code` AS  expCode,
+        `req_ip` AS  reqIp,
+        `log_id` AS  logId,
+        `id` AS  id,
+        `exp_detail` AS  expDetail
+    </sql>
+
+
+    <select id="queryInfo" resultType="com.cnfwsy.interfaces.bean.sys.SysLog">
+        select
+        <include refid="searchInfoSql"/>
+        FROM    t_sys_log a
+        WHERE
+            `id` = #{id}
+        limit 1
+    </select>
+
+    <select id="listInfosCounts" resultType="Integer">
+        SELECT COUNT(*)
+        FROM  t_sys_log a
+        where `del_flag`=0
+    </select>
+
+    <select id="listFilteredInfosCounts" resultType="Integer">
+        SELECT COUNT(*)
+        FROM  t_sys_log
+        where `del_flag`=0
+         <if test="method !=null and method != ''">
+            and  `method`  =#{method}
+         </if>
+         <if test="description !=null and description != ''">
+            and  `description`  =#{description}
+         </if>
+         <if test="updateTime !=null and updateTime != ''">
+            and  `update_time`  =#{updateTime}
+         </if>
+         <if test="remark !=null and remark != ''">
+            and  `remark`  =#{remark}
+         </if>
+         <if test="type !=null and type != ''">
+            and  `type`  =#{type}
+         </if>
+         <if test="params !=null and params != ''">
+            and  `params`  =#{params}
+         </if>
+         <if test="userName !=null and userName != ''">
+            and  `user_name`  =#{userName}
+         </if>
+         <if test="delFlag !=null and delFlag != ''">
+            and  `del_flag`  =#{delFlag}
+         </if>
+         <if test="expCode !=null and expCode != ''">
+            and  `exp_code`  =#{expCode}
+         </if>
+         <if test="reqIp !=null and reqIp != ''">
+            and  `req_ip`  =#{reqIp}
+         </if>
+         <if test="logId !=null and logId != ''">
+            and  `log_id`  =#{logId}
+         </if>
+         <if test="id !=null and id != ''">
+            and  `id`  =#{id}
+         </if>
+         <if test="expDetail !=null and expDetail != ''">
+            and  `exp_detail`  =#{expDetail}
+         </if>
+    </select>
+
+    <select id="searchInfos" resultType="com.cnfwsy.interfaces.bean.sys.SysLog">
+        SELECT
+        <include refid="searchInfoSql"/>
+        FROM  t_sys_log a
+        WHERE del_flag=0
+        <if test="method !=null and method != ''">
+            and  `method`  =#{method}
+        </if>
+        <if test="description !=null and description != ''">
+            and  `description`  =#{description}
+        </if>
+        <if test="updateTime !=null and updateTime != ''">
+            and  `update_time`  =#{updateTime}
+        </if>
+        <if test="remark !=null and remark != ''">
+            and  `remark`  =#{remark}
+        </if>
+        <if test="type !=null and type != ''">
+            and  `type`  =#{type}
+        </if>
+        <if test="params !=null and params != ''">
+            and  `params`  =#{params}
+        </if>
+        <if test="userName !=null and userName != ''">
+            and  `user_name`  =#{userName}
+        </if>
+        <if test="delFlag !=null and delFlag != ''">
+            and  `del_flag`  =#{delFlag}
+        </if>
+        <if test="expCode !=null and expCode != ''">
+            and  `exp_code`  =#{expCode}
+        </if>
+        <if test="reqIp !=null and reqIp != ''">
+            and  `req_ip`  =#{reqIp}
+        </if>
+        <if test="logId !=null and logId != ''">
+            and  `log_id`  =#{logId}
+        </if>
+        <if test="id !=null and id != ''">
+            and  `id`  =#{id}
+        </if>
+        <if test="expDetail !=null and expDetail != ''">
+            and  `exp_detail`  =#{expDetail}
+        </if>
+        limit #{start},#{pageSize}
+    </select>
+
+    <update id="updateInfo">
+        update
+            t_sys_log  a
+        <set>
+            <if test="reqIp !=null and reqIp != ''">
+                `req_ip`  = #{reqIp},
+            </if>
+            <if test="method !=null and method != ''">
+                `method`  = #{method},
+            </if>
+            <if test="description !=null and description != ''">
+                `description`  = #{description},
+            </if>
+            <if test="logId !=null and logId != ''">
+                `log_id`  = #{logId},
+            </if>
+            <if test="remark !=null and remark != ''">
+                `remark`  = #{remark},
+            </if>
+            <if test="expDetail !=null and expDetail != ''">
+                `exp_detail`  = #{expDetail},
+            </if>
+            <if test="type !=null and type != ''">
+                `type`  = #{type},
+            </if>
+            <if test="params !=null and params != ''">
+                `params`  = #{params},
+            </if>
+            <if test="userName !=null and userName != ''">
+                `user_name`  = #{userName},
+            </if>
+            <if test="expCode !=null and expCode != ''">
+                `exp_code`  = #{expCode},
+            </if>
+        </set>
+        WHERE
+            `id` = #{id}
+    </update>
+
+    <update id="del">
+        update  t_sys_log a
+        set  `del_flag`=1
+        where
+            `id` = #{id}
+    </update>
+
+
+    <insert id="add">
+        insert into
+        t_sys_log(`req_ip`,`method`,`description`,`log_id`,`remark`,`exp_detail`,`type`,`params`,`user_name`,`exp_code`)
+        values (#{reqIp},#{method},#{description},#{logId},#{remark},#{expDetail},#{type},#{params},#{userName},#{expCode})
+    </insert>
+
+
+</mapper>

@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cnfwsy.interfaces.mapper.emp.EmpResShowMapper">
+
+    <sql id="searchInfoSql">
+        `id` AS id,
+        `website` AS  website,
+        `show_id` AS  showId,
+        `resume_id` AS  resumeId,
+        `create_time` AS  createTime,
+        `image_path` AS  imagePath,
+        `description` AS  description,
+        `type_id` AS  typeId,
+        `update_time` AS  updateTime,
+        `id` AS  id,
+        `title` AS  title,
+        `del_flag` AS  delFlag
+    </sql>
+
+
+    <select id="queryInfo" resultType="com.cnfwsy.interfaces.bean.emp.EmpResShow">
+        select
+        <include refid="searchInfoSql"/>
+        FROM    t_emp_res_show a
+        WHERE
+            `show_id` = #{showId}
+        limit 1
+    </select>
+
+    <select id="listInfosCounts" resultType="Integer">
+        SELECT COUNT(*)
+        FROM  t_emp_res_show a
+        where `del_flag`=0
+    </select>
+
+    <select id="listFilteredInfosCounts" resultType="Integer">
+        SELECT COUNT(*)
+        FROM  t_emp_res_show
+        where `del_flag`=0
+         <if test="website !=null and website != ''">
+            and  `website`  =#{website}
+         </if>
+         <if test="showId !=null and showId != ''">
+            and  `show_id`  =#{showId}
+         </if>
+         <if test="resumeId !=null and resumeId != ''">
+            and  `resume_id`  =#{resumeId}
+         </if>
+         <if test="createTime !=null and createTime != ''">
+            and  `create_time`  =#{createTime}
+         </if>
+         <if test="imagePath !=null and imagePath != ''">
+            and  `image_path`  =#{imagePath}
+         </if>
+         <if test="description !=null and description != ''">
+            and  `description`  =#{description}
+         </if>
+         <if test="typeId !=null and typeId != ''">
+            and  `type_id`  =#{typeId}
+         </if>
+         <if test="updateTime !=null and updateTime != ''">
+            and  `update_time`  =#{updateTime}
+         </if>
+         <if test="id !=null and id != ''">
+            and  `id`  =#{id}
+         </if>
+         <if test="title !=null and title != ''">
+            and  `title`  =#{title}
+         </if>
+         <if test="delFlag !=null and delFlag != ''">
+            and  `del_flag`  =#{delFlag}
+         </if>
+    </select>
+
+    <select id="searchInfos" resultType="com.cnfwsy.interfaces.bean.emp.EmpResShow">
+        SELECT
+        <include refid="searchInfoSql"/>
+        FROM  t_emp_res_show a
+        WHERE del_flag=0
+        <if test="website !=null and website != ''">
+            and  `website`  =#{website}
+        </if>
+        <if test="showId !=null and showId != ''">
+            and  `show_id`  =#{showId}
+        </if>
+        <if test="resumeId !=null and resumeId != ''">
+            and  `resume_id`  =#{resumeId}
+        </if>
+        <if test="createTime !=null and createTime != ''">
+            and  `create_time`  =#{createTime}
+        </if>
+        <if test="imagePath !=null and imagePath != ''">
+            and  `image_path`  =#{imagePath}
+        </if>
+        <if test="description !=null and description != ''">
+            and  `description`  =#{description}
+        </if>
+        <if test="typeId !=null and typeId != ''">
+            and  `type_id`  =#{typeId}
+        </if>
+        <if test="updateTime !=null and updateTime != ''">
+            and  `update_time`  =#{updateTime}
+        </if>
+        <if test="id !=null and id != ''">
+            and  `id`  =#{id}
+        </if>
+        <if test="title !=null and title != ''">
+            and  `title`  =#{title}
+        </if>
+        <if test="delFlag !=null and delFlag != ''">
+            and  `del_flag`  =#{delFlag}
+        </if>
+        limit #{start},#{pageSize}
+    </select>
+
+    <update id="updateInfo">
+        update
+            t_emp_res_show  a
+        <set>
+            <if test="website !=null and website != ''">
+                `website`  = #{website},
+            </if>
+            <if test="showId !=null and showId != ''">
+                `show_id`  = #{showId},
+            </if>
+            <if test="resumeId !=null and resumeId != ''">
+                `resume_id`  = #{resumeId},
+            </if>
+            <if test="imagePath !=null and imagePath != ''">
+                `image_path`  = #{imagePath},
+            </if>
+            <if test="description !=null and description != ''">
+                `description`  = #{description},
+            </if>
+            <if test="typeId !=null and typeId != ''">
+                `type_id`  = #{typeId},
+            </if>
+            <if test="title !=null and title != ''">
+                `title`  = #{title},
+            </if>
+        </set>
+        WHERE
+            `show_id` = #{showId}
+    </update>
+
+    <update id="del">
+        update  t_emp_res_show a
+        set  `del_flag`=1
+        where
+            `show_id` = #{showId}
+    </update>
+
+
+    <insert id="add">
+        insert into
+        t_emp_res_show(`website`,`show_id`,`resume_id`,`image_path`,`description`,`type_id`,`title`)
+        values (#{website},#{showId},#{resumeId},#{imagePath},#{description},#{typeId},#{title})
+    </insert>
+
+
+</mapper>

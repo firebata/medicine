@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cnfwsy.interfaces.mapper.emp.EmpJobinfoMapper">
+
+    <sql id="searchInfoSql">
+        `id` AS id,
+        `job_name` AS  jobName,
+        `job_id` AS  jobId,
+        `company_id` AS  companyId,
+        `create_time` AS  createTime,
+        `account_id` AS  accountId,
+        `update_time` AS  updateTime,
+        `employee_id` AS  employeeId,
+        `id` AS  id,
+        `del_flag` AS  delFlag,
+        `status` AS  status
+    </sql>
+
+
+    <select id="queryInfo" resultType="com.cnfwsy.interfaces.bean.emp.EmpJobinfo">
+        select
+        <include refid="searchInfoSql"/>
+        FROM    t_emp_jobinfo a
+        WHERE
+            `account_id` = #{accountId}
+        limit 1
+    </select>
+
+    <select id="listInfosCounts" resultType="Integer">
+        SELECT COUNT(*)
+        FROM  t_emp_jobinfo a
+        where `del_flag`=0
+    </select>
+
+    <select id="listFilteredInfosCounts" resultType="Integer">
+        SELECT COUNT(*)
+        FROM  t_emp_jobinfo
+        where `del_flag`=0
+         <if test="jobName !=null and jobName != ''">
+            and  `job_name`  =#{jobName}
+         </if>
+         <if test="jobId !=null and jobId != ''">
+            and  `job_id`  =#{jobId}
+         </if>
+         <if test="companyId !=null and companyId != ''">
+            and  `company_id`  =#{companyId}
+         </if>
+         <if test="createTime !=null and createTime != ''">
+            and  `create_time`  =#{createTime}
+         </if>
+         <if test="accountId !=null and accountId != ''">
+            and  `account_id`  =#{accountId}
+         </if>
+         <if test="updateTime !=null and updateTime != ''">
+            and  `update_time`  =#{updateTime}
+         </if>
+         <if test="employeeId !=null and employeeId != ''">
+            and  `employee_id`  =#{employeeId}
+         </if>
+         <if test="id !=null and id != ''">
+            and  `id`  =#{id}
+         </if>
+         <if test="delFlag !=null and delFlag != ''">
+            and  `del_flag`  =#{delFlag}
+         </if>
+         <if test="status !=null and status != ''">
+            and  `status`  =#{status}
+         </if>
+    </select>
+
+    <select id="searchInfos" resultType="com.cnfwsy.interfaces.bean.emp.EmpJobinfo">
+        SELECT
+        <include refid="searchInfoSql"/>
+        FROM  t_emp_jobinfo a
+        WHERE del_flag=0
+        <if test="jobName !=null and jobName != ''">
+            and  `job_name`  =#{jobName}
+        </if>
+        <if test="jobId !=null and jobId != ''">
+            and  `job_id`  =#{jobId}
+        </if>
+        <if test="companyId !=null and companyId != ''">
+            and  `company_id`  =#{companyId}
+        </if>
+        <if test="createTime !=null and createTime != ''">
+            and  `create_time`  =#{createTime}
+        </if>
+        <if test="accountId !=null and accountId != ''">
+            and  `account_id`  =#{accountId}
+        </if>
+        <if test="updateTime !=null and updateTime != ''">
+            and  `update_time`  =#{updateTime}
+        </if>
+        <if test="employeeId !=null and employeeId != ''">
+            and  `employee_id`  =#{employeeId}
+        </if>
+        <if test="id !=null and id != ''">
+            and  `id`  =#{id}
+        </if>
+        <if test="delFlag !=null and delFlag != ''">
+            and  `del_flag`  =#{delFlag}
+        </if>
+        <if test="status !=null and status != ''">
+            and  `status`  =#{status}
+        </if>
+        limit #{start},#{pageSize}
+    </select>
+
+    <update id="updateInfo">
+        update
+            t_emp_jobinfo  a
+        <set>
+            <if test="jobName !=null and jobName != ''">
+                `job_name`  = #{jobName},
+            </if>
+            <if test="jobId !=null and jobId != ''">
+                `job_id`  = #{jobId},
+            </if>
+            <if test="companyId !=null and companyId != ''">
+                `company_id`  = #{companyId},
+            </if>
+            <if test="accountId !=null and accountId != ''">
+                `account_id`  = #{accountId},
+            </if>
+            <if test="employeeId !=null and employeeId != ''">
+                `employee_id`  = #{employeeId},
+            </if>
+            <if test="status !=null and status != ''">
+                `status`  = #{status},
+            </if>
+        </set>
+        WHERE
+            `account_id` = #{accountId}
+    </update>
+
+    <update id="del">
+        update  t_emp_jobinfo a
+        set  `del_flag`=1
+        where
+            `account_id` = #{accountId}
+    </update>
+
+
+    <insert id="add">
+        insert into
+        t_emp_jobinfo(`job_name`,`job_id`,`company_id`,`account_id`,`employee_id`,`status`)
+        values (#{jobName},#{jobId},#{companyId},#{accountId},#{employeeId},#{status})
+    </insert>
+
+
+</mapper>

@@ -1,0 +1,217 @@
+﻿body{
+  margin:0;
+  padding:0;
+  font-family:Arial"宋体";
+  font-size:12px;
+}
+*{
+  outline:0;
+}
+ul,p,dl,dt,dd,h1,h2,h3,h4,h5{
+  margin:0;
+  padding:0;
+}
+strong{ 
+  font-weight:bold;
+  font-size:14px;
+}
+body {
+  font-family:Arial,simsun;
+  font-size:12px;
+  color:#555;
+}
+select,input {
+    font-size:12px;
+}
+h1 {
+  height:42px;
+  line-height:42px;
+  font-weight:bold;
+  font-size:14px;
+}
+td,dd,.rd-break {
+  word-wrap:break-word;
+  word-break:break-all;
+}
+ul li{
+  list-style:none;
+}
+a{
+  text-decoration:none;
+  color:#315aaa;
+}
+a:hover {
+  text-decoration:underline;
+}
+button { 
+  border: 0 none; 
+  cursor: pointer; 
+}
+input,select { 
+  border:0;
+}
+.popupSendInfo input,.popupSendInfo select{
+  border:1px solid #999;
+}
+.preview-tableleft table {
+  width:245px;
+}
+.clearfix {
+  clear:both;
+}
+.fc315 {
+  color:#315aaa;
+}
+.fcfff {
+  color:#fff;
+}
+.fc333 {
+  color:#333;
+}
+.fc555 {
+  color:#555;
+}
+.fc999 {
+  color:#999;
+}
+.fcB02425{
+  color:#B02425;
+}
+.fc525961{
+  color:#525961;
+}
+a {
+  text-decoration:none;
+  color:#315aaa;
+}
+
+
+.clearfix {
+  clear:both;
+}
+.clearfix:after, .clearfix:before {
+  content: ".";
+  display: block;
+  height: 0;
+  clear:both;
+  visibility: hidden;
+}
+.nav-two-main {
+  width:950px;
+  margin:auto;
+}
+.nav-two-main ul {
+  width:926px;
+  height:27px;
+  padding:4px 12px 0;
+}
+.nav-two-main ul li {
+  height:26px;
+  line-height:26px;
+  float:left;
+  margin-right:10px;
+  padding:0 5px;
+  cursor:pointer;
+}
+#rd-resume-two-current {
+  border:1px solid #BCBCBC;
+  border-bottom:0;
+  background-color:#fff;
+}
+
+
+/**top***/
+.rd-resume-top {
+  height:58px;
+  background:url(http://img02.zhaopin.cn/2012/img/rd/search_img.png) 0 0 repeat-x;
+}
+.rd-resume-topbg {
+  width:950px;
+  height:58px;
+  margin:auto;
+}
+.rd-resume-top-logo {
+  width:138px;
+  height:58px;
+  float:left;
+  background:url(http://img02.zhaopin.cn/2012/img/rd/rd_resumes_img.png) 0 0 no-repeat;
+}
+.rd-resume-right {
+  height:40px;
+  line-height:40px;
+  float:right;
+  padding-right:10px;
+}
+.rd-resume-right ul {
+  float:left;
+}
+.rd-resume-right ul li span {
+   padding:0 5px;
+}
+.rd-resume-right ul li {
+  float:left;
+}
+.rd-resume-right-name {
+  float:left;
+  margin-right:14px;
+}
+.rd-resume-nav {
+  height:44px;
+  background:url(http://img02.zhaopin.cn/2012/img/rd/search_img.png) 0 -59px repeat-x;
+}
+.rd-resume-nav-auto {
+  width:950px;
+  height:44px;
+  margin:auto;
+}
+.rd-resume-nav-auto ul {
+  width:950px;
+  height:39px;
+  padding-top:5px;
+}
+.rd-resume-nav-auto li {
+  height:39px;
+  line-height:39px;
+  font-size:14px;
+  padding:0 22px;
+  margin:0 5px;
+  float:left;
+  cursor:pointer;
+  border-radius: 10px 10px 0 0;  
+  font-weight:bold;
+}
+.rd-resume-nav-auto li { 
+ -webkit-transition: all .5s ;        
+ -moz-transition: all .5s ;
+}
+.rd-resume-nav-auto li:hover {
+  background-color:#3e8ed1;
+}
+.rd-resume-nav-auto .current{
+  background-color:#fff;
+}
+.rd-resume-nav-auto .current:hover{
+  background-color:#fff;
+}
+.rd-resume-nav-two {
+  height:31px;
+  background:url(http://img02.zhaopin.cn/2012/img/rd/search_img.png) 0 -104px repeat-x;
+}
+
+
+
+/***底部***/
+.rd-resume-foot {
+  height:54px;
+  line-height:54px;
+  border-top:3px solid #3c96e4;
+  text-align:center;
+  margin-top:105px;
+}
+/**song0725**/
+.popupSendInfoLoad{overflow:hidden}
+
+/*
+.rd-resumelist-row .rd-resumelist-tdcolor a.link_szh:visited{
+    color:#800000;
+}*/

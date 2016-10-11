@@ -1,0 +1,70 @@
+.divMask {position:absolute;background:#efefef;}
+.popupSendInfo {width:512px; background:url('http://img04.zhaopin.cn/rd2/s/images/erd2/msmsgbox.gif') -512px 0 repeat-y;position:fixed;_position:absolute;z-index:1000;visibility:hidden;top:-100px;left:-100px;text-align:left;}
+.popupSendInfo .msgboxclose { position:absolute;z-index:10;right:15px;top:8px;width:19px;height:20px; background:url('http://img04.zhaopin.cn/rd2/s/images/erd2/msmsgbox.gif') -7px -16px no-repeat; cursor:pointer;}
+.popupSendInfo .msgtop {width:100%;height:8px;font-size:0; background:url('http://img04.zhaopin.cn/rd2/s/images/erd2/msmsgbox.gif') 0 0 no-repeat;}
+.popupSendInfo .mainBlock {}/*background:#fff;clear:both;padding:5px;*/
+.popupSendInfo .msgTag {width:472px;height:25px;border-bottom:1px solid #c0cdde;margin:25px auto 10px 18px;}
+.popupSendInfo .msgTag ul {width:452px;height:25px;margin:0 auto;margin-left:10px;overflow:hidden;padding:0;}
+.popupSendInfo .msgTag li {float:left; position:relative;height:25px; width:106px;text-align:center; background:url('http://img04.zhaopin.cn/rd2/s/images/erd2/msmsgbox.gif') -209px -42px repeat-y;overflow:hidden;}
+.popupSendInfo .msgTag li a {height:25px;font-size:13px;line-height:28px; color:#7f7f7f;font-weight:bold;display:inline-block; text-decoration:none;cursor:pointer}
+.popupSendInfo .msgTag li span { height:25px; width:106px;background:url('http://img04.zhaopin.cn/rd2/s/images/erd2/msmsgbox.gif') -209px -16px no-repeat;display:block;}
+.popupSendInfo .msgTag li.on {background:url('http://img04.zhaopin.cn/rd2/s/images/erd2/msmsgbox.gif') -103px -16px no-repeat;}
+.popupSendInfo .msgTag li.on a {color:#fff;cursor:default;}
+.popupSendInfo .msgTag li.on span { height:25px; width:106px;background:url('http://img04.zhaopin.cn/rd2/s/images/erd2/msmsgbox.gif') -103px -16px no-repeat;}
+.popupSendInfo .msgbottom {width:100%;height:8px;font-size:0; background:url('http://img04.zhaopin.cn/rd2/s/images/erd2/msmsgbox.gif') 0 -6px no-repeat;}
+.popupSendInfo .loadingDiv {background:#fff;clear:both;display:none;}
+.popupSendInfo .loadingBlock {width:200px;background:url('http://img04.zhaopin.cn/rd2/s/images/erd2/icon_loadingani.gif') no-repeat left center;font-size:16px;padding:30px 0 40px 42px;margin:0 auto;}
+.popupSendInfo .successBlock {width:300px;background:url('http://img04.zhaopin.cn/rd2/s/images/icon-success.gif') no-repeat left 30px;font-size:16px;margin:0 auto;padding:30px 0 0 42px;line-height:32px;}
+.popupSendInfo .errorBlock {width:100px;background:url('http://img04.zhaopin.cn/rd2/s/images/icon-error.gif') no-repeat left 30px;font-size:16px;margin:0 auto;padding:30px 0 0 42px;line-height:32px;}
+.popupSendInfo .successBlock a {font-size:12px;}
+.popupSendInfo .borderBlock {border:1px solid #CFDBF1;clear:both;background:#f2f6f9;display:none;}
+.popupSendInfo .itemTabCon {float:left;}
+.popupSendInfo .itemTabCon .itemTabs {list-style-type:none;margin:0;padding:0;}
+.popupSendInfo .itemTabCon .itemTabs li {float:left;height:38px;border:#f5f3f6 1px solid;padding:0 15px;line-height:38px;font-weight:bold;border-bottom:0;}
+.popupSendInfo .itemTabCon .itemTabs li.focus {background:url('http://img04.zhaopin.cn/rd2/s/images/erd2/tabbg_blue.gif') repeat-x top left;color:#3369b1;border:#CFDBF1 1px solid;border-bottom:0;cursor:default;}
+.popupSendInfo .itemTabCon .itemTabs li.blur {background:url('http://img04.zhaopin.cn/rd2/s/images/erd2/tabbg_grey.gif') repeat-x top left;color:#989898;cursor:pointer;}
+.popupSendInfo .itemTabCon .itemTabs li a {text-decoration:none;}
+.popupSendInfo .itemTabCon .itemTabs li.blur a {color:#989898;}
+.popupSendInfo .sendInfoTab {margin:5px 5px 0;}
+.popupSendInfo .sendInfoTab textarea {width:440px;margin-left:20px;}
+.popupSendInfo .sendInfoTab td.txtareErr {padding-left:20px;}
+.popupSendInfo .sendInfoTab select {width:150px;}
+.popupSendInfo .sendInfoTab td {padding:2px;}
+.popupSendInfo .sendInfoTab td.titleTd {text-align:right;padding-left:10px;}
+.popupSendInfo .sendInfoTab td.buttonTd {height:50px;text-align:center;}
+.popupSendInfo .buttonblock {height:26px;text-align:center;margin:0 auto;padding:12px 0;}
+.popupSendInfo .sendInfoTab td.rightTips {text-align:right;}
+.popupSendInfo .sendInfoTab td.leftTips {padding-left:20px;}
+.popupSendInfo .sendInfoTab td.error {color:#f00;}
+.popupSendInfo .tips {color:#989898;}
+.popupSendInfo .okButton { background:url('http://img04.zhaopin.cn/rd2/s/images/erd2/msmsgbox.gif') -26px -16px no-repeat;width:77px;height:24px;cursor:pointer;border:0;}
+
+.popupSendInfoLoad {width:350px;height:214px;background:#F8FBFF;position:fixed;_position:absolute;z-index:1000;visibility:hidden;top:-100px;left:-100px;text-align:left;}
+.popupSendInfoLoad .guanbi{padding-right:15px;  font-size:0px; padding-top:15px; padding-right:15px;}
+.popupSendInfoLoad .close{width:7px; height:7px;background:url(http://img04.zhaopin.cn/rd2/s/images/erd2/close.jpg) no-repeat right; float:right; cursor:pointer;}
+.popupSendInfoLoad .load{ clear:both; background:url(http://img04.zhaopin.cn/rd2/s/images/erd2/loading.gif) no-repeat 0 30px;; height:32px;  padding-left:50px; line-height:32px; width:170px;_width:220px; margin:0 auto;_margin-left:50px;  color:#FF801D; padding-top:30px;}
+.popupSendInfoLoad .load h4{ font-size:20px;color:#FF801D}
+.popupSendInfoLoad .Success{clear:both; background:url(http://img04.zhaopin.cn/rd2/s/images/erd2/success.jpg) no-repeat 0 5px; height:39px; padding-left:50px;line-height:39px; width:200px;_width:250px; margin:0 auto;_margin-left:50px;  color:#FF801D; padding-top:5px;}
+.popupSendInfoLoad .Success h4{ font-size:20px;color:#FF801D}
+.popupSendInfoLoad .email_Success{clear:both; background:url(http://img04.zhaopin.cn/rd2/s/images/erd2/success.jpg) no-repeat 0 25px; height:39px; padding-left:50px;line-height:39px; width:200px;_width:250px; margin:0 auto;_margin-left:50px;  color:#FF801D; padding-top:25px;}
+.popupSendInfoLoad .email_Success h4{ font-size:20px;color:#FF801D}
+.popupSendInfoLoad .Error{clear:both; background:url(http://img04.zhaopin.cn/rd2/s/images/icon-error.gif) no-repeat 0 5px; height:39px; padding-left:50px;line-height:39px; width:200px;_width:250px; margin:0 auto;_margin-left:50px;  color:#FF801D; padding-top:5px;}
+.popupSendInfoLoad .Error h4{ font-size:20px;color:#FF801D}
+.popupSendInfoLoad .email_Error{clear:both; background:url(http://img04.zhaopin.cn/rd2/s/images/icon-error.gif) no-repeat 0 25px; height:39px; padding-left:50px;line-height:39px; width:200px; margin:0 auto;  color:#FF801D; padding-top:25px;}
+.popupSendInfoLoad .email_Error h4{ font-size:20px;color:#FF801D}
+.popupSendInfoLoad ul{padding:0; margin:0; list-style:none; padding-left:50px;padding-top:3px;}
+.popupSendInfoLoad ul li{ color:#0239AD;}
+.popupSendInfoLoad ul li span{ color:#F50011}
+.popupSendInfoLoad .enter{ text-align:center; margin-top:15px;}
+.popupSendInfoLoad .ul_1{ padding-left:148px; margin-bottom:30px;}
+.popupSendInfoLoad .ul_1 li a{color:#0239AD; text-decoration:underline}
+.popupSendInfoLoad .ul_1 li a:hover{color:#0239AD; text-decoration:none}
+.popupSendInfoLoad h4 { padding:0; margin:0;}
+.popupSendInfoLoad ul,.popupSendInfoLoad li{ list-style:none}
+.popupSendInfoLoad p{ padding:0; margin:0;}
+.popupSendInfoLoad img {border:0;cursor:pointer;}
+.popupSendInfoLoad a{ text-decoration:none; color:#000;}
+.popupSendInfoLoad a:hover{text-decoration:underline}
+.red12px {color:#f60;}
+.popupSendInfoLoad td,.popupSendInfoLoad p,.popupSendInfoLoad div,.popupSendInfoLoad span,.popupSendInfoLoad li,.popupSendInfoLoad select,.popupSendInfoLoad input,.popupSendInfoLoad textarea {font-size:12px;font-family:Verdana;word-break:break-all;word-wrap:break-word;}
+.popupSendInfo td,.popupSendInfo p,.popupSendInfo div,.popupSendInfo span,.popupSendInfo li,.popupSendInfo select,.popupSendInfo input,.popupSendInfo textarea {font-size:12px;font-family:Verdana;word-break:break-all;word-wrap:break-word;}
