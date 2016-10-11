@@ -1,0 +1,14 @@
+# files #
+*.war
+*.jar
+*.class
+src/main/resources/conf/props/jdbc_master.properties
+src/main/resources/conf/props/jdbc_slave.properties
+
+# directory #
+target/
+classes/
+.idea/
+.classpath
+.project
+.settings/
