@@ -516,8 +516,6 @@
             <artifactId>junit</artifactId>
             <version>4.12</version>
         </dependency>
-
-
     </dependencies>
 
     <build>
@@ -533,8 +531,6 @@
                     <target>${javaLanguage.version}</target>
                 </configuration>
             </plugin>
-
-
         </plugins>
         <defaultGoal>compile</defaultGoal>
     </build>
